@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: home_select_shop_production
-  username: home_select_shop
-  password: <%= ENV['HOME_SELECT_SHOP_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  
