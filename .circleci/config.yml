@@ -43,7 +43,7 @@ jobs:
            bundle exec rake db:create
            bundle exec rake db:schema:load
 
-    run tests!
+    # run tests!
     - run:
         name: Run rspec
         command: |
