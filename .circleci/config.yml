@@ -13,7 +13,6 @@ jobs:
 
     working_directory: ~/home_select_shop
 
-
     steps:
     - checkout
 
@@ -33,30 +32,30 @@ jobs:
         - ./vendor/bundle
         key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
-    # # Database setup
-    # - run: mv ./config/database.yml.ci ./config/database.yml
+    # Database setup
+    - run: mv ./config/database.yml.ci ./config/database.yml
 
-    # # Database setup
-    # - run:
-    #     name: Databasesetup
-    #     command: |
-    #        bundle exec rake db:create
-    #        bundle exec rake db:schema:load
+    # Database setup
+    - run:
+        name: Databasesetup
+        command: |
+           bundle exec rake db:create
+           bundle exec rake db:schema:load
 
-    # # run tests!
-    # - run:
-    #     name: Run rspec
-    #     command: |
-    #       mkdir /tmp/test-results
-    #       TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
-    #         circleci tests split --split-by=timings)"
+    # run tests!
+    - run:
+        name: Run rspec
+        command: |
+          mkdir /tmp/test-results
+          TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
+            circleci tests split --split-by=timings)"
 
-    #       bundle exec rspec \
-    #         --format progress \
-    #         --format RspecJunitFormatter \
-    #         --out /tmp/test-results/rspec.xml \
-    #         --format progress \
-    #         $TEST_FILES
+          bundle exec rspec \
+            --format progress \
+            --format RspecJunitFormatter \
+            --out /tmp/test-results/rspec.xml \
+            --format progress \
+            $TEST_FILES
 
     # collect reports
     - store_test_results:
