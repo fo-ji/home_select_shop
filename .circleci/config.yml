@@ -13,7 +13,6 @@ jobs:
 
     working_directory: ~/home_select_shop
 
-
     steps:
     - checkout
 
@@ -33,15 +32,15 @@ jobs:
         - ./vendor/bundle
         key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
-    # # Database setup
-    # - run: mv ./config/database.yml.ci ./config/database.yml
+    # Database setup
+    - run: mv ./config/database.yml.ci ./config/database.yml
 
-    # # Database setup
-    # - run:
-    #     name: Databasesetup
-    #     command: |
-    #        bundle exec rake db:create
-    #        bundle exec rake db:schema:load
+    # Database setup
+    - run:
+        name: Databasesetup
+        command: |
+           bundle exec rake db:create
+           bundle exec rake db:schema:load
 
     # # run tests!
     # - run:
