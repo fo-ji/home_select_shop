@@ -1,0 +1,14 @@
+.header
+  .header__title
+    = link_to "HomeSelectShop", root_path, class: "header__title--name"
+  .header__nav
+    - if user_signed_in?
+      .header__nav--mypage
+        = link_to "マイページ", users_path, class: "mypage-btn"
+      .header__nav--logout
+        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout-btn"
+    - else
+      .header__nav--new
+        = link_to "新規登録", new_user_registration_path, class: "new-btn"
+      .header__nav--login
+        = link_to "ログイン", new_user_session_path, class: "login-btn"
