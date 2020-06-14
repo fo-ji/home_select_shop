@@ -1,0 +1,26 @@
+// login&logout
+.header {
+  height: 50px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+
+  &__title {
+    width: 30%;
+    padding-left: 10px;
+    line-height: 1.4;
+    
+    &--name {
+      font-weight: bold;
+      font-size: 26px;
+      text-decoration: none;
+    }
+  }
+
+  &__nav {
+    width: 70%;
+    padding-right: 30px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
