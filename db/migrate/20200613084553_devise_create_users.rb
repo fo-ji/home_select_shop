@@ -16,7 +16,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.date    :birthday,           null: false
       t.integer :height,             null: false
       t.integer :body_weight,        null: false
-      t.integer :foot_size,          null: false
+      t.integer :foot_size,          null: false, default: 0
 
       ## Recoverable
       t.string   :reset_password_token

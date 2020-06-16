@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_06_14_142102) do
     t.date "birthday", null: false
     t.integer "height", null: false
     t.integer "body_weight", null: false
-    t.integer "foot_size", null: false
+    t.integer "foot_size", default: 0, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
