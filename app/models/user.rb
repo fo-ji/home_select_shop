@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one :address
-  has_one :credit_card
+  has_one :address,     dependent: :destroy
+  has_one :credit_card, dependent: :destroy
 
   validates :nickname, presence: true, uniqueness: true
   validates :first_name, :last_name, :first_name_kana, :last_name_kana, :birthday, presence: true
