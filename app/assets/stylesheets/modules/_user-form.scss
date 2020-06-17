@@ -1,0 +1,79 @@
+@import "mixin/color";
+
+.wrapper__form {
+  height: calc(100vh - 50px - 50px);
+
+  .form__container {
+    width: 980px;
+    margin: 0 auto 0;
+
+    &--title {
+      font-size: 23px;
+      height: 40px;
+    }
+
+    &--contents {
+      background: $backgroundColorGray;
+      padding: 36px 48px 40px 48px;
+      border-radius: 4px;
+
+      .field {
+        border-bottom: 1px solid $borderColorGray;
+        height: 80px;
+
+        .label__text {
+          display: inline-block;
+          line-height: 80px;
+          width: 180px;
+          padding: 0;
+          color: #5a5a5a;
+          font-size: 15px;
+        }
+
+        .text__field {
+          width: 475px;
+          border: 1px solid #c8c8c8;
+          border-radius: 2px;
+          padding: 10px 7px;
+        }
+
+        .text__field--half {
+          width: 225px;
+          border: 1px solid #c8c8c8;
+          border-radius: 2px;
+          padding: 10px 7px;
+        }
+
+        .year, .month, .day {
+          width: 125px;
+          border: 1px solid #c8c8c8;
+          border-radius: 2px;
+          padding: 10px 7px;
+        }
+      }
+
+      .actions {
+        
+        .submit-btn {
+          width: 270px;
+          margin: 25px auto 0 auto;
+          font-size: 14px;
+          color: #ffffff !important;
+          display: block;
+          text-align: center;
+          border-radius: 2px;
+          padding: 11px 0 8px;
+          background: $btnColorBlue;
+          cursor: pointer;
+          position: relative;
+          z-index: 1;
+          border: 0;
+          -webkit-appearance: none;
+        }
+      }
+    }
+  }
+  .blank__space {
+    height: 100px;
+  }
+}
