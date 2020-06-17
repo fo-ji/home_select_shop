@@ -50,6 +50,34 @@
   .field
     = f.label :introduction, "プロフィール"
     = f.text_area :introduction, class: "text__field--wide"
+
+  = f.fields_for @address do |a| 
+    .field
+      = a.label :postal_code, "郵便番号"
+      %span.required__item 必須
+      = a.text_field :postal_code, placeholder: "例）123-4567", class: "text__field"
+    .field
+      = a.label :prefecture, "都道府県"
+      %span.required__item 必須
+      = a.select :prefecture, Address.prefectures.keys, {}, {class: "text__field--half"}
+    .field
+      = a.label :city, "市町村"
+      %span.required__item 必須
+      = a.text_field :city, placeholder: "例）札幌市", class: "text__field--half"
+    .field
+      = a.label :address, "番地"
+      %span.required__item 必須
+      = a.text_field :address, placeholder: "例）青葉1-1-1", class: "text__field--half"
+    .field
+      = a.label :apartment, "建物名"
+      = a.text_field :apartment, placeholder: "例）柳ビル103", class: "text__field--half"
+    .field
+      = a.label :phone_number, "電話番号(半角数字、ハイフン「-」も入力してください)"
+      %span.required__item 必須
+      = a.text_field :phone_number, placeholder: "例）03-1234-5678", class: "text__field--half"
+
+
+
   .actions
     = f.submit "会員登録する"
 = render "devise/shared/links"

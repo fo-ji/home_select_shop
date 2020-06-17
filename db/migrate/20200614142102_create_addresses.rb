@@ -2,7 +2,7 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
   def change
     create_table :addresses do |t|
       t.string     :postal_code,  null: false
-      t.integer    :prefecture,   null: false
+      t.integer    :prefecture,   null: false, default: 1
       t.string     :city,         null: false
       t.string     :address,      null: false
       t.string     :apartment
