@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_06_14_142102) do
     t.string "city", null: false
     t.string "address", null: false
     t.string "apartment"
-    t.integer "phone_number", null: false
+    t.string "phone_number", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -26,13 +26,13 @@ ActiveRecord::Schema.define(version: 2020_06_14_142102) do
   end
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "card_company", null: false
+    t.integer "card_company", default: 1, null: false
     t.string "card_number", null: false
     t.integer "card_year", null: false
     t.integer "card_month", null: false
     t.integer "card_pass", null: false
-    t.string "customer_id", null: false
-    t.string "card_id", null: false
+    t.string "customer_id"
+    t.string "card_id"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

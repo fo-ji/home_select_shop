@@ -3,7 +3,7 @@ class Address < ApplicationRecord
 
   validates :postal_code, :prefecture, :city, :address, :phone_number, presence: true
   validates :postal_code, format: { with: /\A\d{3}[-]\d{4}$|^\d{3}[-]\d{2}$|^\d{3}\z/ }
-  validates :phone_number, format: { with: /\A0\d{2,3}[-]\d{1,4}[-]\d{4}\z/ }
+  validates :phone_number, format: { with: /\A\d{10}$|^\d{11}\z/ }
 
   enum prefecture: {
     北海道:1, 青森県:2, 岩手県:3, 宮城県:4, 秋田県:5, 山形県:6, 福島県:7, 

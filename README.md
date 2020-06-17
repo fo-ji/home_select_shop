@@ -88,7 +88,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|card_company|string    |null: false|
+|card_company|integer   |null: false|
 |card_number |string    |null: false|
 |card_year   |integer   |null: false|
 |card_month  |integer   |null: false|

@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_one :address,     dependent: :destroy
   has_one :credit_card, dependent: :destroy
 
+  accepts_nested_attributes_for :address
+  accepts_nested_attributes_for :credit_card
+
   validates :nickname, presence: true, uniqueness: true
   validates :first_name, :last_name, :first_name_kana, :last_name_kana, :birthday, presence: true
   validates :email, presence: true, uniqueness: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }

@@ -51,7 +51,7 @@
     = f.label :introduction, "プロフィール"
     = f.text_area :introduction, class: "text__field--wide"
 
-  = f.fields_for @address do |a| 
+  = f.fields_for :address do |a| 
     .field
       = a.label :postal_code, "郵便番号"
       %span.required__item 必須
@@ -72,11 +72,44 @@
       = a.label :apartment, "建物名"
       = a.text_field :apartment, placeholder: "例）柳ビル103", class: "text__field--half"
     .field
-      = a.label :phone_number, "電話番号(半角数字、ハイフン「-」も入力してください)"
+      = a.label :phone_number, "電話番号(半角数字、ハイフン「-」なしで入力してください)"
       %span.required__item 必須
-      = a.text_field :phone_number, placeholder: "例）03-1234-5678", class: "text__field--half"
-
-
+      = a.telephone_field :phone_number, placeholder: "例）03-1234-5678", class: "text__field--half"
+  = f.fields_for :credit_card do |c|
+    .field
+      = c.label :card_number, "カード番号"
+      %span.required__item 必須
+      = c.text_field :card_number, placeholder: "半角数字のみ", class: "text__field", maxlength:"16"
+    .field
+      = c.label :card_company, "カード会社"
+      %span.required__item 必須
+      = c.select :card_company, CreditCard.card_companies.keys, {}, {class: "text__field--half"}
+      -# %ul.signup__card--list
+      -#   %li.icon--visa
+      -#     = image_tag("visa.svg", id:"icon--visa")
+      -#   %li.icon--master
+      -#     = image_tag("master-card.svg", id:"icon--master")
+      -#   %li.icon--saison
+      -#     = image_tag("saison-card.svg", id:"icon--saison")
+      -#   %li.icon--jcb
+      -#     = image_tag("jcb.svg", id:"icon--jcb")
+      -#   %li.icon--americanexpress
+      -#     = image_tag("american_express.svg", id:"icon--americanexpress")
+      -#   %li.icon--diners
+      -#     = image_tag("dinersclub.svg", id:"icon--diners")
+      -#   %li.icon--discover
+      -#     = image_tag("discover.svg", id:"icon--discover")
+    .field
+      = c.label :有効期限
+      %span.required__item 必須
+      = c.select :card_month, options_for_select(["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]), {}, {class: "text__field--half"}
+      = c.label :月, class: "card__year-and-month"
+      = c.select :card_year, options_for_select((2020..2030)), {}, {class: "text__field--half"}
+      = c.label :年, class: "card__year-and-month"
+    .field
+      = c.label :card_pass, "セキュリティコード"
+      %span.required__item 必須
+      = c.text_field :card_pass, placeholder: "カード背面4桁もしくは3桁の番号", class: "text__field--half"
 
   .actions
     = f.submit "会員登録する"

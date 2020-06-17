@@ -6,18 +6,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    @user = User.new
-    @address = Address.new
-    @credit_card = CreditCard.new
+    @user        = User.new
+    @user.build_address
+    @user.build_credit_card
+    # @address     = Address.new
+    # @credit_card = CreditCard.new
   end
 
   # POST /resource
   def create
-    @user = User.new(user_params)
-    @address = Address.new(address_params)
-    @credit_card = CreditCard.new(credit_card_params)
-
-    if @user.save && @address.save && @credit_card.save
+    @user        = User.new(user_params)
+    # @address     = Address.new(address_params)
+    # @credit_card = CreditCard.new(credit_card_params)
+    if @user.save
       redirect_to root_path
     else
       render :new
@@ -51,16 +52,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def user_params
-    params.require(:user).permit(:nickname, :avatar, :introduction, :first_name, :last_name, :first_name_kana, :last_name_kana, :birthday, :height, :body_weight, :foot_size)
+    params.require(:user).permit(:email, :password, :nickname, :avatar, :introduction, :first_name, :last_name, :first_name_kana, :last_name_kana, :birthday, :height, :body_weight, :foot_size, address_attributes: [:postal_code, :prefecture, :city, :address, :apartment, :phone_number], credit_card_attributes: [:card_company, :card_number, :card_year, :card_month, :card_pass])
   end
 
-  def address_params
-    params.require(:address).permit(:postal_code, :prefecture, :city, :address, :apertment, :phone_number)
-  end
+  # def address_params
+  #   params.require(:address).permit(:postal_code, :prefecture, :city, :address, :apartment, :phone_number, user_attributes: [:id, :user_id])
+  # end
 
-  def credit_card_params
-    params.require(:credit_card).permit(:card_company, :card_number, :card_year, :card_month, :card_pass)
-  end
+  # def credit_card_params
+  #   params.require(:credit_card).permit(:card_company, :card_number, :card_year, :card_month, :card_pass, user_attributes: [:id, :user_id])
+  # end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
