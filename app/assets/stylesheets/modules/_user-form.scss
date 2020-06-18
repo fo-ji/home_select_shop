@@ -1,7 +1,7 @@
 @import "mixin/color";
 
 .wrapper__form {
-  height: calc(100vh - 50px - 50px);
+  height: calc(100% - 50px - 50px - 50px);
 
   .form__container {
     width: 980px;
@@ -32,21 +32,21 @@
 
         .text__field {
           width: 475px;
-          border: 1px solid #c8c8c8;
+          border: 1px solid $textBorderColorGray;
           border-radius: 2px;
           padding: 10px 7px;
         }
 
         .text__field--half {
           width: 225px;
-          border: 1px solid #c8c8c8;
+          border: 1px solid $textBorderColorGray;
           border-radius: 2px;
           padding: 10px 7px;
         }
 
         .year, .month, .day {
           width: 125px;
-          border: 1px solid #c8c8c8;
+          border: 1px solid $textBorderColorGray;
           border-radius: 2px;
           padding: 10px 7px;
         }
@@ -58,7 +58,7 @@
           width: 270px;
           margin: 25px auto 0 auto;
           font-size: 14px;
-          color: #ffffff !important;
+          color: #ffffff;
           display: block;
           text-align: center;
           border-radius: 2px;
@@ -73,6 +73,7 @@
       }
     }
   }
+  
   .blank__space {
     height: 100px;
   }
