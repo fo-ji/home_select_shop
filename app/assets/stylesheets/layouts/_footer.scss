@@ -1,0 +1,12 @@
+.footer {
+  height: 50px;
+  width: 100vw;
+  background: $backgroundColorGray;
+  
+  &__text {
+    color: $fontColorGray;
+    width: 100px;
+    margin: 0 auto;
+    line-height: 50px;
+  }
+}
