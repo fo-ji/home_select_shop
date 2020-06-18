@@ -1,26 +1,41 @@
-// login&logout
 .header {
   height: 50px;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: space-between;
+  margin: auto;
+  background: #323232;
 
   &__title {
     width: 30%;
-    padding-left: 10px;
-    line-height: 1.4;
+    padding-left: 100px;
+    line-height: 50px;
     
     &--name {
       font-weight: bold;
       font-size: 26px;
       text-decoration: none;
+      color: white;
     }
   }
-
+  
   &__nav {
     width: 70%;
     padding-right: 30px;
     display: flex;
     justify-content: flex-end;
+  }
+  
+  .nav__tab {
+    width: 100px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    display: inline-block;
+
+    &:hover {
+      background-color: black;
+    }
   }
 }
