@@ -1,5 +1,8 @@
+@import "mixin/color";
+
 * {
   box-sizing: border-box;
+  color: $globalFontColorBlack;
 }
 
 .wrapper__toppage {

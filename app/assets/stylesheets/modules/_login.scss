@@ -1,0 +1,103 @@
+.wrapper__login {
+  height: calc(100vh - 50px - 50px);
+  
+  .login__container {
+    width: 980px;
+    margin: 0 auto 0;
+  
+    &--title {
+      font-size: 23px;
+      height: 40px;
+    }
+
+    .form__container--contents {
+      background: $backgroundColorGray;
+      margin: 60px auto 0;
+      padding: 36px 48px 40px 48px;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+
+      .contents__left {
+
+
+        &--title {
+          font-size: 18px;
+          text-align: center;
+          padding: 0 0 37px 0;
+        }
+
+        .field {
+          height: 80px;
+  
+          .text__field--login {
+            width: 325px;
+            border: 1px solid $textBorderColorGray;
+            border-radius: 2px;
+            padding: 10px 7px;
+          }
+        }
+        .actions {
+          font-size: 15px;
+          padding-left: 85px;
+
+          .submit-btn {
+            width: 150px;
+            color: #ffffff;
+            display: block;
+            text-align: center;
+            border-radius: 2px;
+            padding: 11px 0 8px;
+            background: $btnColorBlue;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .contents__right {
+        width: 420px;
+        border-left: 1px solid #dcdcdc;
+        padding: 0 0 0 71px;
+
+        &--title {
+          font-size: 18px;
+          text-align: center;
+          padding: 0 0 37px 0;
+        }
+
+        .sns__login {
+
+          &--google {
+            width: 325px;
+            border: 1px solid $textBorderColorGray;
+            border-radius: 2px;
+            color: $btnColorBlue;
+            padding: 10px 7px 10px 60px;
+          }
+
+          &--facebook {
+            width: 325px;
+            border: 1px solid $textBorderColorGray;
+            border-radius: 2px;
+            color: $btnColorBlue;
+            padding: 10px 7px 10px 50px;
+            margin-top: 15px;
+          }
+
+          &--twitter {
+            width: 325px;
+            border: 1px solid $textBorderColorGray;
+            border-radius: 2px;
+            color: $btnColorBlue;
+            padding: 10px 7px 10px 60px;
+            margin-top: 15px;
+          }
+        }
+      }
+    }
+  }
+
+  .blank__space {
+    height: 100px;
+  }
+}
