@@ -5,6 +5,7 @@
     %h1.form__container--title ユーザー情報編集
     .form__container--contents
       = form_with(model: current_user, local: true) do |f|
+        = render "devise/shared/error_messages", resource: current_user
         .field
           = f.label :nickname, "ニックネーム", class: "label__text"
           %span.required__item 必須
