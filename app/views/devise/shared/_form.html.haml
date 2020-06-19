@@ -1,5 +1,5 @@
 .form__container--contents
-  = form_for(@user, url: user_registration_path) do |f|
+  = form_with(model: @user, url: user_registration_path, local: true) do |f|
     = render "devise/shared/error_messages", resource: @user
     .field
       = f.label :nickname, "ニックネーム", class: "label__text"
@@ -98,8 +98,6 @@
         = c.label :card_pass, "セキュリティコード", class: "label__text"
         %span.required__item 必須
         = c.text_field :card_pass, placeholder: "カード背面3~4桁の番号", class: "text__field--half"
-
     .actions
       = f.submit "会員登録する", class: "submit-btn"
-
 .blank__space
