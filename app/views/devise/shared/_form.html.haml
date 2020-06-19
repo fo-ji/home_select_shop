@@ -40,7 +40,7 @@
       %span.required__item 必須
       = f.number_field :body_weight, placeholder: "例) 60", min: 20, max: 150, class: "text__field--half"
     .field
-      = f.label :foot_size, "体重", class: "label__text"
+      = f.label :foot_size, "足のサイズ", class: "label__text"
       %span.required__item 必須
       = f.select :foot_size, User.foot_sizes.keys.map {|k| [k, k]}, {}, { class: "text__field--half", data: {} }
     .field
