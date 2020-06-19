@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: :mypage
+  before_action :set_user, only: [:mypage, :destroy]
 
   def edit
   end
@@ -13,7 +13,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy 
+    @user.destroy
+    redirect_to root_path
+  end
+
   def mypage
+  end
+
+  def leave
   end
 
   private

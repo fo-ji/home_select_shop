@@ -5,9 +5,10 @@ Rails.application.routes.draw do
 
   root "items#index"
 
-  resources :users, only: [:edit, :update] do
+  resources :users, only: [:edit, :update, :destroy] do
     member do
       get "mypage"
+      get "leave"
     end
   end
 end

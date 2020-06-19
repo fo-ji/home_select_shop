@@ -37,13 +37,13 @@
         margin: 28px 0 0 0;
 
         &--info {
-          background: #f0f0f0;
+          background: $backgroundColorGray;
           padding: 36px 48px 40px 48px;
-          border: 1px solid #dcdcdc;
+          border: 1px solid $borderColorGray;
           border-radius: 4px;
 
           .info__title {
-            border-bottom: 1px solid #dcdcdc;
+            border-bottom: 1px solid $borderColorGray;
             font-size: 18px;
             padding: 0 0 10px 0;
           }
@@ -53,12 +53,12 @@
             padding: 25px 0 23px 0;
             vertical-align: middle;
             font-size: 15px;
-            border-bottom: 1px solid #dcdcdc;
+            border-bottom: 1px solid $borderColorGray;
             
             &--label {
               width: 150px;
               margin-right: 50px;
-              color: #808080;
+              color: $fontColorGray;
             }
 
             &--value {
