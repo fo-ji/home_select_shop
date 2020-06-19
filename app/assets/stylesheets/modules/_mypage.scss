@@ -1,0 +1,76 @@
+.wrapper__mypage {
+  height: calc(100% - 50px - 50px - 50px);
+
+  .mypage__container {
+    width: 980px;
+    margin: 0 auto 0;
+
+    &--title {
+      font-size: 23px;
+      height: 40px;
+    }
+
+    &--all {
+      display: flex;
+
+      .container__left {
+        width: 150px;
+        margin-right: 50px;
+  
+        &--menu {
+          margin: 23px 0 0;
+          padding: 0 0 15px;
+          border-bottom: solid 1px #e6e6e6;
+
+          .menu__title {
+            text-decoration: none;
+
+            &:hover {
+              color: $btnColorBlue;
+            }
+          }
+        }
+      }
+  
+      .container__right {
+        width: 780px;
+        margin: 28px 0 0 0;
+
+        &--info {
+          background: #f0f0f0;
+          padding: 36px 48px 40px 48px;
+          border: 1px solid #dcdcdc;
+          border-radius: 4px;
+
+          .info__title {
+            border-bottom: 1px solid #dcdcdc;
+            font-size: 18px;
+            padding: 0 0 10px 0;
+          }
+
+          .info__list {
+            display: flex;
+            padding: 25px 0 23px 0;
+            vertical-align: middle;
+            font-size: 15px;
+            border-bottom: 1px solid #dcdcdc;
+            
+            &--label {
+              width: 150px;
+              margin-right: 50px;
+              color: #808080;
+            }
+
+            &--value {
+              width: 450px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .blank__space {
+    height: 100px;
+  }
+}
