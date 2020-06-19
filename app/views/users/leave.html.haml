@@ -1,0 +1,22 @@
+.wrapper__mypage--leave
+  = render "layouts/sub-header"
+
+  .mypage__container
+    %h1.mypage__container--title ユーザー登録情報
+    .mypage__container--all
+      .container__left
+        .container__left--menu
+          = link_to "会員情報変更", edit_user_path, class: "menu__title"
+        .container__left--menu
+          = link_to "注文履歴", "#", class: "menu__title"
+        .container__left--menu
+          = link_to "退会", leave_user_path, class: "menu__title"
+
+      .container__right
+        %ul.container__right--info
+          %li.info__title 退会手続き
+          .container__right--submit
+            = link_to "退会しない", mypage_user_path, class: "submit-btn-white"
+            = link_to "退会する", user_path, class: "submit-btn", method: :delete
+
+  .blank__space
