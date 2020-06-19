@@ -11,6 +11,6 @@ FactoryBot.define do
     birthday              {"2000/01/01"}
     height                {"160"}
     body_weight           {"50"}
-    foot_size             {"1"}
+    foot_size             {"25.0cm"}
   end
 end
