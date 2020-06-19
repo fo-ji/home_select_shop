@@ -5,5 +5,9 @@ Rails.application.routes.draw do
 
   root "items#index"
 
-  resources :users, only: [:edit, :update]
+  resources :users, only: [:edit, :update] do
+    member do
+      get "mypage"
+    end
+  end
 end
