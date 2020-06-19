@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(user_params)
+      bypass_sign_in(current_user)
       redirect_to root_path
     else
       render :edit
