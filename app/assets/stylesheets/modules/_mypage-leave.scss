@@ -1,0 +1,90 @@
+.wrapper__mypage--leave {
+  height: calc(100vh - 50px - 50px);
+
+  .mypage__container {
+    width: 980px;
+    margin: 0 auto 0;
+
+    &--title {
+      font-size: 23px;
+      height: 40px;
+    }
+
+    &--all {
+      display: flex;
+
+      .container__left {
+        width: 150px;
+        margin-right: 50px;
+  
+        &--menu {
+          margin: 23px 0 0;
+          padding: 0 0 15px;
+          border-bottom: solid 1px #e6e6e6;
+
+          .menu__title {
+            text-decoration: none;
+
+            &:hover {
+              color: $btnColorBlue;
+            }
+          }
+        }
+      }
+  
+      .container__right {
+        width: 780px;
+        margin: 28px 0 0 0;
+
+        &--info {
+          background: $backgroundColorGray;
+          padding: 36px 48px 40px 48px;
+          border: 1px solid $borderColorGray;
+          border-radius: 4px;
+
+          .info__title {
+            border-bottom: 1px solid $borderColorGray;
+            font-size: 18px;
+            padding: 0 0 10px 0;
+          }
+
+          .container__right--submit {
+            padding: 36px 48px 0 48px;
+            display: flex;
+            
+            .submit-btn-white {
+              margin-left: 120px;
+              width: 150px;
+              border: 1px solid $btnColorBlue;
+              color: $btnColorBlue;
+              display: block;
+              text-align: center;
+              border-radius: 2px;
+              padding: 11px 0 8px;
+              background: #fff;
+              cursor: pointer;
+              text-decoration: none;
+            }
+
+            .submit-btn {
+              margin-left: 10px;
+              width: 150px;
+              color: #ffffff;
+              display: block;
+              text-align: center;
+              border-radius: 2px;
+              padding: 11px 0 8px;
+              background: $btnColorBlue;
+              cursor: pointer;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .blank__space {
+    height: 100px;
+  }
+}
