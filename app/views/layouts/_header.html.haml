@@ -4,7 +4,7 @@
   .header__nav
     - if user_signed_in?
       .header__nav--mypage
-        = link_to "マイページ", "#", class: "nav__tab"
+        = link_to "マイページ", mypage_user_path(current_user), class: "nav__tab"
       .header__nav--logout
         = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav__tab"
       .header__nav--menu
