@@ -50,10 +50,10 @@
           %li.info__list
             .info__list--label アバター
             .info__list--value
-            -# - if @user.avatar.present?
-            -#   = image_tag(@user.avatar_path)
-            -# - else
-            -#   = image_tag "no_image.png"
+              - if @user.avatar.url.present?
+                = image_tag @user.avatar.url, class: "avatar__show"
+              - else
+                = image_tag "no_image.png", class: "avatar__show"
           %li.info__list
             .info__list--label プロフィール
             .info__list--value
