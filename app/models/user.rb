@@ -17,6 +17,8 @@ class User < ApplicationRecord
   validates :height, :body_weight, presence: true, length: { in: 2..3 }, format: { with: /\A[0-9]+\z/ }
   validates :foot_size, presence: true
 
+  mount_uploader :avatar, ImageUploader
+
   enum foot_size: { "20.0cm": 0, "20.5cm": 1, "21.0cm": 2, "21.5cm": 3, "22.0cm": 4, "22.5cm": 5,
                     "23.0cm": 6, "23.5cm": 7, "24.0cm": 8, "24.5cm": 9, "25.0cm": 10, "25.5cm": 11,
                     "26.0cm": 12, "26.5cm": 13, "27.0cm": 14, "27.5cm": 15, "28.0cm": 16, "28.5cm": 17,
