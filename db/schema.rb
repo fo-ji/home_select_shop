@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_14_142102) do
+ActiveRecord::Schema.define(version: 2020_06_20_044904) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postal_code", null: false
@@ -39,6 +39,31 @@ ActiveRecord::Schema.define(version: 2020_06_14_142102) do
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
   end
 
+  create_table "shops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "email", default: "", null: false
+    t.text "avatar"
+    t.text "introduction"
+    t.string "postal_code", null: false
+    t.integer "prefecture", default: 1, null: false
+    t.string "city", null: false
+    t.string "address", null: false
+    t.string "apartment"
+    t.string "phone_number", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_shops_on_name", unique: true
+  end
+
+  create_table "stylists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "shop_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_stylists_on_shop_id"
+    t.index ["user_id"], name: "index_stylists_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -65,4 +90,6 @@ ActiveRecord::Schema.define(version: 2020_06_14_142102) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "credit_cards", "users"
+  add_foreign_key "stylists", "shops"
+  add_foreign_key "stylists", "users"
 end
