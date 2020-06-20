@@ -4,8 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one :address,     dependent: :destroy
-  has_one :credit_card, dependent: :destroy
+  has_one  :address,     dependent: :destroy
+  has_one  :credit_card, dependent: :destroy
+  has_many :stylists
+  has_many :shops,       through: :stylists
 
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :credit_card
