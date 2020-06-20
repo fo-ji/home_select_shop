@@ -11,4 +11,6 @@ Rails.application.routes.draw do
       get "leave"
     end
   end
+
+  resources :shops, only: [:new, :create]
 end
