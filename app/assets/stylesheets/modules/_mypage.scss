@@ -63,6 +63,12 @@
 
             &--value {
               width: 450px;
+
+              .avatar__show {
+                width: 100px;
+                height: 100px;
+                border: 1px solid $fontColorGray;
+              }
             }
           }
         }
