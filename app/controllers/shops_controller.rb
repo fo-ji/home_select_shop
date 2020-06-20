@@ -2,8 +2,9 @@ class ShopsController < ApplicationController
   def new
     @shop = Shop.new
     @shop.users << current_user
+    # @shop.users.build
   end
-
+  
   def create
     @shop = Shop.new(shop_params)
     if @shop.save
@@ -16,6 +17,6 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :email, :avatar, :introduction, :postal_code, :prefecture, :city, :address, :apartment, :phone_number , user_ids: [])
+    params.require(:shop).permit(:name, :email, :avatar, :introduction, :postal_code, :prefecture, :city, :address, :apartment, :phone_number, { user_ids: [] })
   end
 end
