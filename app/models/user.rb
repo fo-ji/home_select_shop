@@ -4,20 +4,20 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one  :address,     dependent: :destroy
-  has_one  :credit_card, dependent: :destroy
-  has_many :stylists,    dependent: :destroy
-  has_many :shops,       through: :stylists, dependent: :destroy
+  has_one    :address,     dependent: :destroy
+  has_one    :credit_card, dependent: :destroy
+  has_many   :stylists
+  has_many   :shops, through: :stylists
 
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :credit_card
 
-  validates :nickname, presence: true, uniqueness: true
-  validates :first_name, :last_name, :first_name_kana, :last_name_kana, :birthday, presence: true
-  validates :email, presence: true, uniqueness: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
-  validates :password, presence: true, length: { minimum: 7 }, format: { with: /(?=.*\d+.*)(?=.*[a-zA-Z]+.*)./ }
-  validates :height, :body_weight, presence: true, length: { in: 2..3 }, format: { with: /\A[0-9]+\z/ }
-  validates :foot_size, presence: true
+  validates :nickname, presence: true, uniqueness: true, on: [:create, :edit]
+  validates :first_name, :last_name, :first_name_kana, :last_name_kana, :birthday, presence: true, on: [:create, :edit]
+  validates :email, presence: true, uniqueness: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, on: [:create, :edit]
+  validates :password, presence: true, length: { minimum: 7 }, format: { with: /(?=.*\d+.*)(?=.*[a-zA-Z]+.*)./ }, on: [:create, :edit]
+  validates :height, :body_weight, presence: true, length: { in: 2..3 }, format: { with: /\A[0-9]+\z/ }, on: [:create, :edit]
+  validates :foot_size, presence: true, on: [:create, :edit]
 
   mount_uploader :avatar, ImageUploader
 
