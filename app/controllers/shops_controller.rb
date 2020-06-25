@@ -21,6 +21,9 @@ class ShopsController < ApplicationController
     # @shop_items = Shop.items.page(params[:page]).per(20)
   end
 
+  def admin
+  end
+
   private
 
   def shop_params
