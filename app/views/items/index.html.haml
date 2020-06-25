@@ -3,3 +3,6 @@
   %p Find me in app/views/items/index.html.haml
   .shop__new--link
     = link_to "shopを登録する", new_shop_path
+  .shop__all
+    - @shops.each do |shop|
+      = link_to shop.name, shop_path(shop.id)
