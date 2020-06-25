@@ -1,0 +1,44 @@
+.wrapper__mypage
+  = render "layouts/sub-header"
+
+  .mypage__container
+    %h1.mypage__container--title ショップ情報
+    .mypage__container--all
+      .container__left
+        .container__left--menu
+          = link_to "商品一覧", shop_path(@shop.id), class: "menu__title"
+        .container__left--menu
+          = link_to "スタイリスト一覧", "#", class: "menu__title"
+        -  @shop.users.each do |admin_user|
+          - if user_signed_in? && admin_user == current_user
+            .container__left--menu
+              = link_to "管理者専用ページ", "#", class: "menu__title"
+        .container__left--menu
+          = link_to "カテゴリーから探す", "#", class: "menu__title"
+        .container__left--menu
+          = link_to "ブランドから探す", "#", class: "menu__title"
+        .container__left--menu
+          = link_to "スタイリストから探す", "#", class: "menu__title"
+        .container__left--menu
+          = link_to "サイズから探す", "#", class: "menu__title"
+
+      .container__right
+        .shop__header
+          .shop__header--image
+            - if @shop.avatar.url.present?
+              = image_tag @shop.avatar.url, class: "avatar__show"
+            - else
+              = image_tag "no_image.png", class: "avatar__show"
+          .shop__header--title
+            = @shop.name
+        .shop__item--title 商品一覧
+        .items__container
+          %ul.items__container--list
+            - for i in 1..20
+              %li.item__list
+                .item__thumbnail
+                  = link_to "#" do
+                    .item__thumbnail--image
+                      = image_tag "no_image.png", class: "item__show"
+                  .item__label テストテストテストテストテスト
+                  .item__price ¥450000000000000000000000000000
