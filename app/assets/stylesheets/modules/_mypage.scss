@@ -64,11 +64,16 @@
 
             &--value {
               width: 450px;
+              display: flex;
 
               .avatar__show {
                 width: 100px;
                 height: 100px;
                 border: 1px solid $fontColorGray;
+              }
+
+              .stylist__name {
+                padding-right: 10px;
               }
             }
           }

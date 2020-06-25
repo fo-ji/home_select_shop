@@ -22,6 +22,13 @@ class ShopsController < ApplicationController
   end
 
   def admin
+    @shop = Shop.find(params[:id])
+    @shop.users.each do |admin_user|
+      if user_signed_in? && admin_user == current_user
+      else
+        render :show
+      end
+    end
   end
 
   private

@@ -6,73 +6,49 @@
     .mypage__container--all
       .container__left
         .container__left--menu
-          = link_to "ショップ情報変更", edit_user_path, class: "menu__title"
+          = link_to "ショップ情報変更", "#", class: "menu__title"
         .container__left--menu
-          = link_to "注文履歴", "#", class: "menu__title"
+          = link_to "スタイリスト追加", "#", class: "menu__title"
         .container__left--menu
-          = link_to "退会", leave_user_path, class: "menu__title"
+          = link_to "販売履歴", "#", class: "menu__title"
+        .container__left--menu
+          = link_to "退会", "退会", class: "menu__title"
 
       .container__right
         %ul.container__right--info
-          %li.info__title 会員登録情報
+          %li.info__title ショップ登録情報
           %li.info__list
-            .info__list--label ニックネーム
+            .info__list--label 店舗名
             .info__list--value
-              = @user.nickname
+              = @shop.name
           %li.info__list
             .info__list--label メールアドレス
             .info__list--value
-              = @user.email
-          %li.info__list
-            .info__list--label お名前
-            .info__list--value
-              = @user.last_name + " " + @user.first_name
-          %li.info__list
-            .info__list--label お名前(カナ)
-            .info__list--value
-              = @user.last_name_kana + " " + @user.first_name_kana
-          %li.info__list
-            .info__list--label 生年月日
-            .info__list--value
-              = @user.birthday
-          %li.info__list
-            .info__list--label 身長
-            .info__list--value
-              = @user.height
-          %li.info__list
-            .info__list--label 体重
-            .info__list--value
-              = @user.body_weight
-          %li.info__list
-            .info__list--label 足のサイズ
-            .info__list--value
-              = @user.foot_size
+              = @shop.email
           %li.info__list
             .info__list--label アバター
             .info__list--value
-              - if @user.avatar.url.present?
-                = image_tag @user.avatar.url, class: "avatar__show"
+              - if @shop.avatar.url.present?
+                = image_tag @shop.avatar.url, class: "avatar__show"
               - else
                 = image_tag "no_image.png", class: "avatar__show"
           %li.info__list
             .info__list--label プロフィール
             .info__list--value
-              = @user.introduction
+              = @shop.introduction
           %li.info__list
             .info__list--label 住所
             .info__list--value
-              = "〒" + @user.address.postal_code + " " + @user.address.prefecture + @user.address.city + @user.address.address + " " + @user.address.apartment
+              = "〒" + @shop.postal_code + " " + @shop.prefecture + @shop.city + @shop.address + " " + @shop.apartment
           %li.info__list
             .info__list--label 電話番号
             .info__list--value
-              = @user.address.phone_number
+              = @shop.phone_number
           %li.info__list
-            .info__list--label カード番号
+            .info__list--label スタイリスト
             .info__list--value
-              = @user.credit_card.card_number
-          %li.info__list
-            .info__list--label カード会社
-            .info__list--value
-              = @user.credit_card.card_company
+              - @shop.users.each do |stylist|
+                .stylist__name
+                  = stylist.nickname + "さん"
 
   .blank__space
