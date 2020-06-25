@@ -1,6 +1,6 @@
 class ShopsController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
-  before_action      :set_shop, only: [:show, :edit, :admin]
+  before_action      :set_shop, only: [:show, :edit, :admin, :update]
 
 
   def new
