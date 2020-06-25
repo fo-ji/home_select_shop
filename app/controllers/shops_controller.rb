@@ -1,6 +1,6 @@
 class ShopsController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
-  before_action      :set_shop, only: [:show, :edit, :admin, :update, :destroy]
+  before_action      :set_shop, only: [:show, :edit, :admin, :update, :destroy, :leave]
 
 
   def new
@@ -43,6 +43,7 @@ class ShopsController < ApplicationController
     @shop.users.each do |admin_user|
       if user_signed_in? && admin_user == current_user
         @shop.destroy
+        redirect_to root_path
       else
         redirect_to root_path
       end
