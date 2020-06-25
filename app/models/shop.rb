@@ -1,5 +1,5 @@
 class Shop < ApplicationRecord
-  has_many :stylists
+  has_many :stylists, dependent: :destroy
   has_many :users, through: :stylists
 
   validates :name, presence: true, uniqueness: true
