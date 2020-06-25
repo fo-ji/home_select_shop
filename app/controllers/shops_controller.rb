@@ -22,6 +22,7 @@ class ShopsController < ApplicationController
   end
 
   def admin
+    @shop = Shop.find(params[:id])
   end
 
   private
