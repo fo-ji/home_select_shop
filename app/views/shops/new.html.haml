@@ -4,7 +4,7 @@
   .form__container
     %h1.form__container--title 店舗登録
     .form__container--contents
-      = form_with(model: @shop, url: shops_path, local: true) do |f|
+      = form_with(model: @shop, local: true) do |f|
         = render "devise/shared/error_messages", resource: @shop
         .field
           = f.label :name, "店舗名", class: "label__text"
@@ -47,8 +47,11 @@
           %span.required__item 必須
           = f.telephone_field :phone_number, placeholder: "例）0312345678", class: "text__field--half"
 
-        -# .field
-        -#   = f.collection_check_boxes :user_ids, User.all, :id, :nickname
+        .field
+          %span.required__item ※ご自身は自動的に「スタイリスト」に登録されます。
+          %input{name: "shop[user_ids][]", type: "hidden", value: current_user.id}
+          %br
+          %span.required__item ※店舗登録後は「スタイリスト」の追加が可能です。
 
         .actions
           = f.submit "店舗登録する", class: "submit-btn"
