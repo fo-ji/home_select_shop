@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :shops, only: [:new, :create, :show] do
+  resources :shops, only: [:new, :create, :show, :edit, :update] do
     member do
       get "admin"
     end

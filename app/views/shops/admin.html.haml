@@ -6,7 +6,7 @@
     .mypage__container--all
       .container__left
         .container__left--menu
-          = link_to "ショップ情報変更", "#", class: "menu__title"
+          = link_to "ショップ情報変更", edit_shop_path(@shop.id), class: "menu__title"
         .container__left--menu
           = link_to "スタイリスト追加", "#", class: "menu__title"
         .container__left--menu
