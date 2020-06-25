@@ -4,55 +4,6 @@
   .form__container
     %h1.form__container--title 店舗登録
     .form__container--contents
-      = form_with(model: @shop, local: true) do |f|
-        = render "devise/shared/error_messages", resource: @shop
-        .field
-          = f.label :name, "店舗名", class: "label__text"
-          %span.required__item 必須
-          = f.text_field :name, autofocus: true, class: "text__field", autocomplete: "name"
-        .field
-          = f.label :email, "メールアドレス", class: "label__text"
-          %span.required__item 必須
-          = f.email_field :email, class: "text__field", autocomplete: "email"
-        .field
-          = f.label :avatar, "アバター", class: "label__text"
-          %span.required__item 任意
-          = f.file_field :avatar
-        .field
-          = f.label :introduction, "店舗紹介", class: "label__text"
-          %span.required__item 任意
-          = f.text_area :introduction, class: "text__field--wide"
-        .field
-          = f.label :postal_code, "郵便番号", class: "label__text"
-          %span.required__item 必須
-          = f.text_field :postal_code, placeholder: "例）123-4567", class: "text__field"
-        .field
-          = f.label :prefecture, "都道府県", class: "label__text"
-          %span.required__item 必須
-          = f.select :prefecture, Address.prefectures.keys, {}, {class: "text__field--half"}
-        .field
-          = f.label :city, "市町村", class: "label__text"
-          %span.required__item 必須
-          = f.text_field :city, placeholder: "例）札幌市", class: "text__field--half"
-        .field
-          = f.label :address, "番地", class: "label__text"
-          %span.required__item 必須
-          = f.text_field :address, placeholder: "例）青葉1-1-1", class: "text__field--half"
-        .field
-          = f.label :apartment, "建物名", class: "label__text"
-          %span.required__item 任意
-          = f.text_field :apartment, placeholder: "例）柳ビル103", class: "text__field--half"
-        .field
-          = f.label :phone_number, "電話番号(半角)", class: "label__text"
-          %span.required__item 必須
-          = f.telephone_field :phone_number, placeholder: "例）0312345678", class: "text__field--half"
+      = render "form", {shop: @shop}
 
-        .field
-          %span.required__item ※ご自身は自動的に「スタイリスト」に登録されます。
-          %input{name: "shop[user_ids][]", type: "hidden", value: current_user.id}
-          %br
-          %span.required__item ※店舗登録後は「スタイリスト」の追加が可能です。
-
-        .actions
-          = f.submit "店舗登録する", class: "submit-btn"
-    .blank__space
+  .blank__space
