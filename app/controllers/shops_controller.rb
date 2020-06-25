@@ -17,6 +17,8 @@ class ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
+    # ページネーションの設定（商品出品ができてから実装）
+    # @shop_items = Shop.items.page(params[:page]).per(20)
   end
 
   private
