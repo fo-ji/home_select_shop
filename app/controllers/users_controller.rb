@@ -24,6 +24,14 @@ class UsersController < ApplicationController
   def leave
   end
 
+
+  def search
+    @user = User.search(params[:keyword])
+    respond_to do |format| 
+     format.json 
+    end 
+  end
+
   private
 
   def user_params

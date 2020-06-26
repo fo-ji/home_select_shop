@@ -25,4 +25,9 @@ class User < ApplicationRecord
                     "23.0cm": 6, "23.5cm": 7, "24.0cm": 8, "24.5cm": 9, "25.0cm": 10, "25.5cm": 11,
                     "26.0cm": 12, "26.5cm": 13, "27.0cm": 14, "27.5cm": 15, "28.0cm": 16, "28.5cm": 17,
                     "29.0cm": 18, "29.5cm": 19, "30.0cm": 20 }
+
+  def self.search(search)
+    return User.all() unless search
+    User.where("name LIKE ?", "%#{search}%") 
+  end
 end

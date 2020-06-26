@@ -43,7 +43,8 @@
   .field
     %span.required__item ※ご自身は自動的に「スタイリスト」に登録されます。
     %input{name: "shop[user_ids][]", type: "hidden", value: current_user.id}
-    %br
-    %span.required__item ※店舗登録後は「スタイリスト」の追加が可能です。
+    .search_form
+      = form_with(url: search_users_path, local: true, method: :get, class: "search-form") do |f|
+        = f.text_field :keyword, placeholder: "emailアドレスより検索してください", class: "search-input"
   .actions
     = f.submit "店舗登録する", class: "submit-btn"

@@ -10,6 +10,9 @@ Rails.application.routes.draw do
       get "mypage"
       get "leave"
     end
+    collection do 
+      get "search"
+    end
   end
 
   resources :shops, only: [:new, :create, :show, :edit, :update, :destroy] do
