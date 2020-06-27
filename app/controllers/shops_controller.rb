@@ -1,6 +1,7 @@
 class ShopsController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
   before_action      :set_shop, only: [:show, :edit, :admin, :update, :destroy, :leave]
+  before_action      :set_admin_stylist, only: [:edit, :update, :leave, :destroy, :admin]
 
   def new
     @shop = Shop.new
@@ -22,12 +23,6 @@ class ShopsController < ApplicationController
   end
 
   def edit
-    # @shop.users.each do |admin_user|
-    #   if user_signed_in? && admin_user == current_user
-    #   else
-    #     render :show
-    #   end
-    # end
   end
 
   def update
@@ -39,23 +34,14 @@ class ShopsController < ApplicationController
   end
 
   def destroy 
-    @shop.users.each do |admin_user|
-      if user_signed_in? && admin_user == current_user
-        @shop.destroy
-        redirect_to root_path
-      else
-        redirect_to root_path
-      end
+    if @shop.destroy
+      redirect_to root_path
+    else
+      render :admin
     end
   end
 
   def admin
-    # @shop.users.each do |admin_user|
-    #   if user_signed_in? && admin_user == current_user
-    #   else
-    #     render :show
-    #   end
-    # end
   end
 
   def leave
@@ -69,5 +55,11 @@ class ShopsController < ApplicationController
 
   def set_shop
     @shop = Shop.find(params[:id])
+  end
+
+  def set_admin_stylist
+    unless @shop.users.include?(current_user)
+      redirect_to root_path
+    end
   end
 end
