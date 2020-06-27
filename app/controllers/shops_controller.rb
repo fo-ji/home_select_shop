@@ -22,12 +22,12 @@ class ShopsController < ApplicationController
   end
 
   def edit
-    @shop.users.each do |admin_user|
-      if user_signed_in? && admin_user == current_user
-      else
-        render :show
-      end
-    end
+    # @shop.users.each do |admin_user|
+    #   if user_signed_in? && admin_user == current_user
+    #   else
+    #     render :show
+    #   end
+    # end
   end
 
   def update
@@ -50,12 +50,12 @@ class ShopsController < ApplicationController
   end
 
   def admin
-    @shop.users.each do |admin_user|
-      if user_signed_in? && admin_user == current_user
-      else
-        render :show
-      end
-    end
+    # @shop.users.each do |admin_user|
+    #   if user_signed_in? && admin_user == current_user
+    #   else
+    #     render :show
+    #   end
+    # end
   end
 
   def leave
