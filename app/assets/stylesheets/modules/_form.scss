@@ -53,8 +53,75 @@
         }
       }
 
+      .stylist-form {
+        &__label {
+          display: inline-block;
+          line-height: 80px;
+          width: 180px;
+          padding: 0;
+          color: #5a5a5a;
+          font-size: 15px;
+          border-bottom: 1px solid $borderColorGray;
+        }
+      
+        &__input {
+          width: 475px;
+          border: 1px solid $textBorderColorGray;
+          border-radius: 2px;
+          padding: 10px 7px;
+        }
+      
+        &__field {
+          &:after {
+            content: "";
+            clear: both;
+            display: block;
+          }
+      
+          &--left {
+            float: left;
+            width: 21%;
+          }
+      
+          &--right {
+            float: right;
+            width: 79%;
+          }
+        }
+      }
+      
+      .stylist-user {
+        padding: 0 15px;
+        line-height: 50px;
+        font-size: 14px;
+        border-bottom: 1px solid $borderColorGray;
+      
+        &:after {
+          content: "";
+          clear: both;
+          display: block;
+        }
+      
+        &__name {
+          float: left;
+        }
+      
+        &__btn {
+          float: right;
+          display: inline-block;
+          cursor: pointer;
+      
+          &--add {
+            color: #38aef0;
+          }
+          
+          &--remove {
+            color: #f05050;
+          }
+        }
+      }      
+
       .actions {
-        
         .submit-btn {
           width: 270px;
           margin: 25px auto 0 auto;

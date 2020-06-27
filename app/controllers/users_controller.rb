@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
 
   def search
-    @user = User.search(params[:keyword])
+    @user = User.search(params[:keyword], current_user.id)
     respond_to do |format| 
      format.json 
     end 

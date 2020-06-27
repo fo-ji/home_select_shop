@@ -26,8 +26,8 @@ class User < ApplicationRecord
                     "26.0cm": 12, "26.5cm": 13, "27.0cm": 14, "27.5cm": 15, "28.0cm": 16, "28.5cm": 17,
                     "29.0cm": 18, "29.5cm": 19, "30.0cm": 20 }
 
-  def self.search(search)
-    return User.all() unless search
-    User.where("name LIKE ?", "%#{search}%") 
+  def self.search(input, id)
+    return nil if input == ""
+    User.where( ["email LIKE ?", "%#{input}"] ).where.not(id: id).limit(1)
   end
 end
