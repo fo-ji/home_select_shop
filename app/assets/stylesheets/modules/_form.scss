@@ -27,7 +27,6 @@
           line-height: 80px;
           width: 180px;
           padding: 0;
-          color: #5a5a5a;
           font-size: 15px;
         }
 
@@ -59,7 +58,6 @@
           line-height: 80px;
           width: 180px;
           padding: 0;
-          color: #5a5a5a;
           font-size: 15px;
           border-bottom: 1px solid $borderColorGray;
         }
@@ -95,27 +93,25 @@
         line-height: 50px;
         font-size: 14px;
         border-bottom: 1px solid $borderColorGray;
-      
-        &:after {
-          content: "";
-          clear: both;
-          display: block;
-        }
+        display: flex;
+        justify-content: space-between;
       
         &__name {
-          float: left;
+          padding-left: 20px;
         }
       
         &__btn {
-          float: right;
-          display: inline-block;
           cursor: pointer;
-      
+
           &--add {
+            padding-right: 20px;
             color: #38aef0;
           }
-          
+
           &--remove {
+            display: inline-block;
+            cursor: pointer;
+            padding-right: 20px;
             color: #f05050;
           }
         }
