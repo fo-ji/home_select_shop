@@ -40,10 +40,33 @@
     = f.label :phone_number, "電話番号(半角)", class: "label__text"
     %span.required__item 必須
     = f.telephone_field :phone_number, placeholder: "例）0312345678", class: "text__field--half"
-  .field
-    %span.required__item ※ご自身は自動的に「スタイリスト」に登録されます。
-    %input{name: "shop[user_ids][]", type: "hidden", value: current_user.id}
-    %br
-    %span.required__item ※店舗登録後は「スタイリスト」の追加が可能です。
+
+  .stylist-form__field
+    .stylist-form__field--left
+      %label.stylist-form__label{for: "stylist_スタイリストを追加"} スタイリストを追加
+  .stylist-form__field--right
+    .stylist-form__search.clearfix
+      %span.required__item 任意
+      %input#user-search-field.stylist-form__input{placeholder: "追加したいユーザーのemailを入力してください", type: "text"}/
+    #user-search-result
+
+  .stylist-form__field.clearfix
+    .stylist-form__field--left
+      %label.stylist-form__label{for: "stylist_スタイリスト"} スタイリスト
+    .stylist-form__field--right
+
+      #stylist-users.js-add-user
+        .stylist-user.clearfix.js-chat-member
+          %input{name: "shop[user_ids][]", type: "hidden", value: current_user.id}
+          %p.stylist-user__name= current_user.nickname
+
+        - @shop.users.each do |user|
+          - if current_user.nickname != user.nickname
+            .stylist-user.clearfix.js-chat-member
+              %input{name: "shop[user_ids][]", type: "hidden", value: user.id}
+              %p.stylist-user__name
+                = user.nickname 
+              %a.user-search-remove.chat-group-user__btn.stylist-user__btn--remove.js-remove-btn 削除
+
   .actions
     = f.submit "店舗登録する", class: "submit-btn"

@@ -2,7 +2,6 @@ class ShopsController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
   before_action      :set_shop, only: [:show, :edit, :admin, :update, :destroy, :leave]
 
-
   def new
     @shop = Shop.new
     @shop.users << current_user
