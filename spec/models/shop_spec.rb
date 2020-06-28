@@ -64,5 +64,9 @@ RSpec.describe Shop, type: :model do
       shop.valid?
       expect(shop.errors[:phone_number]).to include("は不正な値です")
     end
+    it "全て入力されていればstylistの登録もOK" do
+      shop = create(:shop, :stylist)
+      expect(shop).to be_valid
+    end
   end
 end
