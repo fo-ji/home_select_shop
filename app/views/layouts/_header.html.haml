@@ -7,12 +7,41 @@
         = link_to "マイページ", mypage_user_path(current_user), class: "nav__tab"
       .header__nav--logout
         = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav__tab"
+      .header__nav--cart
+        .nav__tab カート
       .header__nav--menu
-        .nav__tab メニュー
+        .nav__tab
+          メニュー
+          %ul.sub__nav
+            %li.sub__nav--list
+              カテゴリー一覧
+            %li.sub__nav--list
+              ブランド一覧
+            %li.sub__nav--list
+              ショップ一覧
+            %li.sub__nav--list
+              = link_to "ショップを登録する", new_shop_path, class: "nav__btn"
+            - if current_user.shops.present?
+              %li.sub__nav--list{id: "my__shop"} マイショップ
+              - current_user.shops.each do |shop|
+                %li.sub__nav--list
+                  = link_to shop.name, shop_path(shop.id), class: "nav__btn"
     - else
       .header__nav--new
         = link_to "新規登録", new_user_registration_path, class: "nav__tab"
       .header__nav--login
         = link_to "ログイン", new_user_session_path, class: "nav__tab"
+      .header__nav--cart
+        .nav__tab カート
       .header__nav--menu
-        .nav__tab メニュー
+        .nav__tab
+          メニュー
+          %ul.sub__nav
+            %li.sub__nav--list
+              カテゴリー一覧
+            %li.sub__nav--list
+              ブランド一覧
+            %li.sub__nav--list
+              ショップ一覧
+            %li.sub__nav--list
+              = link_to "ショップを登録する", new_shop_path, class: "nav__btn"
