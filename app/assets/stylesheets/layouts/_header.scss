@@ -33,9 +33,54 @@
     text-align: center;
     line-height: 50px;
     display: inline-block;
+    position: relative;
 
+    ul li {
+      display: none;
+    }
+    
     &:hover {
       background-color: black;
+
+      .sub__nav {
+        display: block;
+        background-color: #fff;
+        border: 1px solid $textBorderColorGray;
+        width: 180px;
+        position: absolute;
+        right: 0;
+
+        &--list {
+          display: block;
+          height: 50px;
+
+          &:hover {
+            color: $btnColorBlue;
+          }
+
+          .nav__btn {
+            text-decoration: none;
+
+            &:hover {
+              color: $btnColorBlue;
+            }
+          }
+        }
+
+        #my__shop {
+          height: 40px;
+          line-height: 40px;
+          font-weight: bold;
+          border-top: 1px solid $textBorderColorGray;
+          border-bottom: 1px solid $textBorderColorGray;
+          background: #323232;
+          color: white;
+
+          &:hover {
+            color: white;
+          }
+        }
+      }
     }
   }
 }
