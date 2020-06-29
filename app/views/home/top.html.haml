@@ -90,14 +90,11 @@
       %section.container__brand
         %h2.container__brand--title ブランド
         %ul.container__brand--list
-          %li.click__list
-            = link_to "nano･universe"
-          %li.click__list
-            = link_to "SHIPS"
-          %li.click__list
-            = link_to "FREAK'S STORE"
-        %p.container__category--more
-          = link_to "ブランド一覧", "#", class: "link__blue"
+          - Brand.brands.keys[1..10].each do |brand|
+            %li.click__list
+              = link_to brand, "#"
+          %p.container__category--more
+            = link_to "ブランド一覧", "#", class: "link__blue"
 
       %section.container__shop
         %h2.container__shop--title ショップ
