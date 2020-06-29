@@ -17,56 +17,18 @@
       %section.container__category
         %h2.container__category--title カテゴリー
         %ul.container__category--list
-          = link_to "#", class: "link__btn" do
-            %li.click__list-js
-              .click__list-js--text トップス
-              .click__list-js--icon
-                = icon("fas", "angle-right fa-2x")
-          = link_to "#", class: "link__btn" do
-            %li.click__list-js
-              .click__list-js--text ジャケット/アウター
-              .click__list-js--icon
-                = icon("fas", "angle-right fa-2x")
-          = link_to "#", class: "link__btn" do
-            %li.click__list-js
-              .click__list-js--text パンツ
-              .click__list-js--icon
-                = icon("fas", "angle-right fa-2x")
-          = link_to "#", class: "link__btn" do
-            %li.click__list-js
-              .click__list-js--text オールインワン
-              .click__list-js--icon
-                = icon("fas", "angle-right fa-2x")
-          = link_to "#", class: "link__btn" do
-            %li.click__list-js
-              .click__list-js--text スカート
-              .click__list-js--icon
-                = icon("fas", "angle-right fa-2x")
-          = link_to "#", class: "link__btn" do
-            %li.click__list-js
-              .click__list-js--text ワンピース
-              .click__list-js--icon
-                = icon("fas", "angle-right fa-2x")
-          = link_to "#", class: "link__btn" do
-            %li.click__list-js
-              .click__list-js--text バッグ
-              .click__list-js--icon
-                = icon("fas", "angle-right fa-2x")
-          = link_to "#", class: "link__btn" do
-            %li.click__list-js
-              .click__list-js--text シューズ
-              .click__list-js--icon
-                = icon("fas", "angle-right fa-2x")
-          = link_to "#", class: "link__btn" do
-            %li.click__list-js
-              .click__list-js--text 財布/小物
-              .click__list-js--icon
-                = icon("fas", "angle-right fa-2x")
-          = link_to "#", class: "link__btn" do
-            %li.click__list-js
-              .click__list-js--text その他
-              .click__list-js--icon
-                = icon("fas", "angle-right fa-2x")
+          - @parents.each do |parent|
+            = link_to "#", class: "link__btn" do
+              %li.click__list-js
+                .click__list-js--text
+                  = parent.name
+                .click__list-js--icon
+                  = icon("fas", "angle-right fa-2x")
+                  %ul.click__list-js--child
+                    - parent.children.each do |child|
+                      = link_to "#", class: "child__list" do
+                        %li.child__list--name
+                          = child.name
         %p.container__category--more
           = link_to "カテゴリー一覧", "#", class: "link__blue"
 
