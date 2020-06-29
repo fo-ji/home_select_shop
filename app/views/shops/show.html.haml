@@ -31,15 +31,7 @@
           .shop__header--title
             = @shop.name
         .shop__item--title 商品一覧
-        .items__container
-          %ul.items__container--list
-            - for i in 1..20
-              %li.item__list
-                .item__thumbnail
-                  = link_to "#" do
-                    .item__thumbnail--image
-                      = image_tag "no_image.png", class: "item__show"
-                  .item__label テストテストテストテストテスト
-                  .item__price ¥450000000000000000000000000000
+        = render "layouts/item-box"
+
       -# 商品出品できてから実装
       -# = paginate @shop_items

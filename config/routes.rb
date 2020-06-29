@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
   }
 
-  root "items#index"
+  root "home#top"
 
   resources :users, only: [:edit, :update, :destroy] do
     member do
