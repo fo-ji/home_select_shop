@@ -17,13 +17,18 @@
       %section.container__category
         %h2.container__category--title カテゴリー
         %ul.container__category--list
-          - @parents.each do |category|
+          - @parents.each do |parent|
             = link_to "#", class: "link__btn" do
               %li.click__list-js
                 .click__list-js--text
-                  = category.name
+                  = parent.name
                 .click__list-js--icon
                   = icon("fas", "angle-right fa-2x")
+                  %ul.click__list-js--child
+                    - parent.children.each do |child|
+                      = link_to "#", class: "child__list" do
+                        %li.child__list--name
+                          = child.name
         %p.container__category--more
           = link_to "カテゴリー一覧", "#", class: "link__blue"
 

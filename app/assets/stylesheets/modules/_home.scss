@@ -99,6 +99,12 @@
           display: flex;
           justify-content: space-between;
           border-bottom: solid 1px $iconColorGray;
+          position: relative;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $backgroundColorGray;
+          }
 
           &--text {
             color: $fontColorDarkgray;
@@ -110,6 +116,37 @@
             color: $iconColorGray;
             margin: 0;
             line-height: 1.4;
+          }
+
+          &--child {
+            display: none;
+            position: absolute;
+            top: 0;
+            z-index: 20;
+            padding: 12px 10px 15px;
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(77,77,77,0.2);
+            width: 160px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: -1px;
+
+            .child__list {
+              padding: 10px 2px 8px 5px;
+              margin: 0;
+              line-height: 1.4;
+              text-decoration: none;
+            }
+            
+            .child__list--name {
+              font-size: 13px;
+              color: $fontColorDarkgray;
+              
+              &:hover {
+                font-weight: bold;
+                color: $fontColorBlue;
+              }
+            }
           }
         }
       }
