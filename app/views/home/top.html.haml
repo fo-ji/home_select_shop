@@ -1,0 +1,124 @@
+.wrapper__toppage
+  = render "layouts/content-header"
+
+  .main__container
+    .main__container--left
+
+      %section.container__search
+        %h2.container__search--title 探す
+        %ul.container__search--list
+          %li.click__list
+            = link_to "ブランドから探す"
+          %li.click__list
+            = link_to "ショップから探す"
+          %li.click__list
+            = link_to "こだわり条件から探す"
+
+      %section.container__category
+        %h2.container__category--title カテゴリー
+        %ul.container__category--list
+          = link_to "#", class: "link__btn" do
+            %li.click__list-js
+              .click__list-js--text トップス
+              .click__list-js--icon
+                = icon("fas", "angle-right fa-2x")
+          = link_to "#", class: "link__btn" do
+            %li.click__list-js
+              .click__list-js--text ジャケット/アウター
+              .click__list-js--icon
+                = icon("fas", "angle-right fa-2x")
+          = link_to "#", class: "link__btn" do
+            %li.click__list-js
+              .click__list-js--text パンツ
+              .click__list-js--icon
+                = icon("fas", "angle-right fa-2x")
+          = link_to "#", class: "link__btn" do
+            %li.click__list-js
+              .click__list-js--text オールインワン
+              .click__list-js--icon
+                = icon("fas", "angle-right fa-2x")
+          = link_to "#", class: "link__btn" do
+            %li.click__list-js
+              .click__list-js--text スカート
+              .click__list-js--icon
+                = icon("fas", "angle-right fa-2x")
+          = link_to "#", class: "link__btn" do
+            %li.click__list-js
+              .click__list-js--text ワンピース
+              .click__list-js--icon
+                = icon("fas", "angle-right fa-2x")
+          = link_to "#", class: "link__btn" do
+            %li.click__list-js
+              .click__list-js--text バッグ
+              .click__list-js--icon
+                = icon("fas", "angle-right fa-2x")
+          = link_to "#", class: "link__btn" do
+            %li.click__list-js
+              .click__list-js--text シューズ
+              .click__list-js--icon
+                = icon("fas", "angle-right fa-2x")
+          = link_to "#", class: "link__btn" do
+            %li.click__list-js
+              .click__list-js--text 財布/小物
+              .click__list-js--icon
+                = icon("fas", "angle-right fa-2x")
+          = link_to "#", class: "link__btn" do
+            %li.click__list-js
+              .click__list-js--text その他
+              .click__list-js--icon
+                = icon("fas", "angle-right fa-2x")
+        %p.container__category--more
+          = link_to "カテゴリー一覧", "#", class: "link__blue"
+
+      %section.container__like
+        %h2.container__like--title お気に入り
+        %ul.container__like--list
+          = link_to "#", class: "link__btn" do
+            %li.click__list-js
+              .click__list-js--text アイテム
+          = link_to "#", class: "link__btn" do
+            %li.click__list-js
+              .click__list-js--text ブランド
+              .click__list-js--icon
+                = icon("fas", "angle-right fa-2x")
+          = link_to "#", class: "link__btn" do
+            %li.click__list-js
+              .click__list-js--text ショップ
+              .click__list-js--icon
+                = icon("fas", "angle-right fa-2x")
+
+      %section.container__brand
+        %h2.container__brand--title ブランド
+        %ul.container__brand--list
+          %li.click__list
+            = link_to "nano･universe"
+          %li.click__list
+            = link_to "SHIPS"
+          %li.click__list
+            = link_to "FREAK'S STORE"
+        %p.container__category--more
+          = link_to "ブランド一覧", "#", class: "link__blue"
+
+      %section.container__shop
+        %h2.container__shop--title ショップ
+        %ul.container__shop--list
+          %li.click__list
+            = link_to "DIESEL"
+          %li.click__list
+            = link_to "SHIPS"
+          %li.click__list
+            = link_to "adidas"
+        %p.container__category--more
+          = link_to "ショップ一覧", "#", class: "link__blue"
+
+    .main__container--right
+      %section.container__item
+        %h2.container__item--title 最新のコーディネート
+        = render "layouts/item-box"
+        %p.container__item--more
+          = link_to "もっと見る", "#", class: "link__blue"
+      %section.container__item
+        %h2.container__item--title 閲覧数の多いコーディネート
+        = render "layouts/item-box"
+        %p.container__item--more
+          = link_to "もっと見る", "#", class: "link__blue"
