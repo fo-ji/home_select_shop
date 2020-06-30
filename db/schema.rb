@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_29_065819) do
+ActiveRecord::Schema.define(version: 2020_06_30_114358) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postal_code", null: false
@@ -52,6 +52,30 @@ ActiveRecord::Schema.define(version: 2020_06_29_065819) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
+  end
+
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.text "explain", null: false
+    t.integer "size", default: 4, null: false
+    t.integer "postage", default: 1, null: false
+    t.integer "shipping_date", default: 1, null: false
+    t.integer "gender", default: 1, null: false
+    t.bigint "user_id", null: false
+    t.bigint "shop_id", null: false
+    t.bigint "brand_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_items_on_brand_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["gender"], name: "index_items_on_gender"
+    t.index ["name"], name: "index_items_on_name", unique: true
+    t.index ["price"], name: "index_items_on_price"
+    t.index ["shop_id"], name: "index_items_on_shop_id"
+    t.index ["size"], name: "index_items_on_size"
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "shops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -105,6 +129,10 @@ ActiveRecord::Schema.define(version: 2020_06_29_065819) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "credit_cards", "users"
+  add_foreign_key "items", "brands"
+  add_foreign_key "items", "categories"
+  add_foreign_key "items", "shops"
+  add_foreign_key "items", "users"
   add_foreign_key "stylists", "shops"
   add_foreign_key "stylists", "users"
 end
