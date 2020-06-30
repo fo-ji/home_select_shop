@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :shops, only: [:new, :create, :show, :edit, :update, :destroy] do
+    resources :items, only: [:new, :create]
     member do
       get "admin"
       get "leave"
