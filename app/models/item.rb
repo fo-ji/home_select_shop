@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   has_many   :images, dependent: :destroy
 
   accepts_nested_attributes_for :images
+  accepts_nested_attributes_for :brand
 
   validates :name, :explain, :size, :postage, :shipping_date, :gender, presence: true
   validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 100, less_than_or_equal_to: 9999999}
