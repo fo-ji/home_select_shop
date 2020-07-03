@@ -18,6 +18,15 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def search_child
+    respond_to do |format|
+      format.html
+      format.json do
+        @children = Category.find(params[:parent_id]).children
+      end
+    end
+  end
+
   private
 
   def item_params

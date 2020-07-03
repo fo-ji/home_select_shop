@@ -21,6 +21,9 @@ Rails.application.routes.draw do
       get "admin"
       get "leave"
     end
+    collection do
+      get "search_child", defaults: { format: "json" }
+    end
   end
 
   resources :items, only: :show
