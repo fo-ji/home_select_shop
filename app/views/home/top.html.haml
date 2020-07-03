@@ -72,6 +72,26 @@
 
     .main__container--right
       %section.container__item
+        %h2.container__item--title 最新のアイテム
+        .items__container
+          %ul.items__container--list
+            - @all_items.each do |item|
+              %li.item__list
+                .item__thumbnail
+                  = link_to item_path(item.id) do
+                    .item__thumbnail--image
+                    - if item.images.present?
+                      = image_tag item.images[0].item_image.url, class: "item__show", size: "120x160"
+                    - else
+                      = image_tag "no_image.png", class: "item__show"
+                  .item__label
+                    = item.name
+                  .item__price
+                    = "¥ #{item.price.to_s(:delimited)}"
+
+        %p.container__item--more
+          = link_to "もっと見る", "#", class: "link__blue"
+      %section.container__item
         %h2.container__item--title 最新のコーディネート
         = render "layouts/item-box"
         %p.container__item--more

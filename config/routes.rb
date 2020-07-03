@@ -22,4 +22,6 @@ Rails.application.routes.draw do
       get "leave"
     end
   end
+
+  resources :items, only: :show
 end
