@@ -60,6 +60,18 @@
         font-size: 15px;
         overflow: hidden;
       }
+
+      .item__edit {
+        height: 20px;
+        width: 120px;
+        font-size: 15px;
+        
+        .edit__btn {
+          display: block;
+          text-align: center;
+          color: $fontColorBlue;
+        }
+      }
     }
   }
 }
