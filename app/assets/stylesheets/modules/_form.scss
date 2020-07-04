@@ -18,6 +18,10 @@
       margin: 60px auto 0;
       border-radius: 4px;
 
+      .category__form {
+        display: flex;
+      }
+
       .field {
         border-bottom: 1px solid $borderColorGray;
         height: 80px;
