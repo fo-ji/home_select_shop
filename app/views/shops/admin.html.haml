@@ -8,7 +8,9 @@
         .container__left--menu
           = link_to "ショップ情報変更", edit_shop_path(@shop.id), class: "menu__title"
         .container__left--menu
-          = link_to "商品出品", new_shop_item_path(@shop.id), class: "menu__title"
+          = link_to "アイテム出品", new_shop_item_path(@shop.id), class: "menu__title"
+        .container__left--menu
+          = link_to "出品商品一覧", admin_index_shop_path(@shop.id), class: "menu__title"
         .container__left--menu
           = link_to "販売履歴", "#", class: "menu__title"
         .container__left--menu

@@ -16,13 +16,14 @@ Rails.application.routes.draw do
   end
 
   resources :shops, only: [:new, :create, :show, :edit, :update, :destroy] do
-    resources :items, only: [:new, :create] do
+    resources :items, only: [:new, :create, :edit, :update] do
       collection do
         get "search_child", defaults: { format: "json" }
       end
     end
     member do
       get "admin"
+      get "admin_index"
       get "leave"
     end
   end
