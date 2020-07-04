@@ -61,15 +61,24 @@
         overflow: hidden;
       }
 
-      .item__edit {
+      .item__btn {
         height: 20px;
         width: 120px;
         font-size: 15px;
+        display: flex;
         
-        .edit__btn {
+        &--edit a {
           display: block;
+          width: 60px;
           text-align: center;
           color: $fontColorBlue;
+        }
+
+        &--delete a {
+          display: block;
+          width: 60px;
+          text-align: center;
+          color: red;
         }
       }
     }
