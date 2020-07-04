@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :shops, only: [:new, :create, :show, :edit, :update, :destroy] do
-    resources :items, only: [:new, :create, :edit, :update] do
+    resources :items, only: [:new, :create, :edit, :update, :destroy] do
       collection do
         get "search_child", defaults: { format: "json" }
       end
