@@ -1,7 +1,7 @@
 class ShopsController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
   before_action      :set_shop, only: [:admin_index, :show, :edit, :admin, :update, :destroy, :leave]
-  before_action      :set_admin_stylist, only: [:edit, :update, :leave, :destroy, :admin]
+  before_action      :set_admin_stylist, only: [:admin_index, :edit, :update, :leave, :destroy, :admin]
 
   def admin_index
     @items = @shop.items

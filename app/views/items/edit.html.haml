@@ -5,7 +5,7 @@
     %h1.form__container--title 商品の編集
     .form__container--contents
       -# = render "form", {shop: @item}
-      = form_with(model: [@shop, @item], url: shop_items_path, local: true) do |f|
+      = form_with(model: [@shop, @item], url: shop_item_path(@shop, @item), local: true) do |f|
         = render "devise/shared/error_messages", resource: @item
         .image__container
           .image__container--title
