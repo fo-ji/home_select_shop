@@ -4,7 +4,6 @@
   .form__container
     %h1.form__container--title 商品の編集
     .form__container--contents
-      -# = render "form", {shop: @item}
       = form_with(model: [@shop, @item], url: shop_item_path(@shop, @item), local: true) do |f|
         = render "devise/shared/error_messages", resource: @item
         .image__container
@@ -12,7 +11,6 @@
             出品画像
             %span.required__item 必須
             %p.required__message 最大5枚までアップロードできます
-
           .image__container--preview
             - @item.images.each do |image|
               .preview-box
@@ -47,13 +45,15 @@
           = f.label :size, "サイズ", class: "label__text"
           %span.required__item 必須
           = f.select :size, Item.sizes.keys, {}, {class: "text__field--half"}
-
         .categry__form
           .field{id: "category__box--parent"}
             = f.label :category, "カテゴリー", class: "label__text"
             %span.required__item 必須
-            = f.collection_select :category, Category.all.limit(10), :id, :name, {prompt: "---"}, {class: "text__field--half", id: "parent-form"}
-
+            = f.select :category, options_for_select(@category_parent_ary.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "---", selected: @item.category.parent.id}),{}, {class: "text__field--half", id: "parent-form"}
+          .field{id: "category__box--children"}
+            = f.label :category, "サブカテゴリー", class: "label__text"
+            %span.required__item 必須
+            = f.select :category_id, options_for_select(@category_children_ary.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "---", selected: @item.category.id}),{}, {class: "text__field--half"}
         = f.fields_for :brand do |b|
           .field
             = b.label :brand, "ブランド", class: "label__text"

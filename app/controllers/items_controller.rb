@@ -21,11 +21,22 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    child_category = @item.category
+
+    @category_parent_ary = []
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_ary << parent
+    end
+
+    @category_children_ary = []
+    Category.where(ancestry: child_category.ancestry).each do |children|
+      @category_children_ary << children
+    end
   end
 
   def update
     if @item.update(item_params)
-      redirect_to admin_index_shop_path
+      redirect_to root_path
     else
       render :edit
     end

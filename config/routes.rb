@@ -20,6 +20,9 @@ Rails.application.routes.draw do
       collection do
         get "search_child", defaults: { format: "json" }
       end
+      member do
+        get "search_child", defaults: { format: "json" }
+      end
     end
     member do
       get "admin"
