@@ -18,6 +18,12 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def edit
+  end
+
+  def update
+  end
+
   def search_child
     respond_to do |format|
       format.html
