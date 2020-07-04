@@ -1,0 +1,80 @@
+.wrapper__form
+  = render "layouts/sub-header"
+
+  .form__container
+    %h1.form__container--title 商品の編集
+    .form__container--contents
+      -# = render "form", {shop: @item}
+      = form_with(model: [@shop, @item], url: shop_items_path, local: true) do |f|
+        = render "devise/shared/error_messages", resource: @item
+        .image__container
+          .image__container--title
+            出品画像
+            %span.required__item 必須
+            %p.required__message 最大5枚までアップロードできます
+
+          .image__container--preview
+            - @item.images.each do |image|
+              .preview-box
+                .upper-box
+                  = image_tag image.item_image.url, width: "112", height: "112", alt: "preview"
+                .lower-box
+                  .delete-box
+                    .delete-btn
+                      %span 削除
+          .image__container--label
+            = f.label :"images_attributes_#{@item.images.length}_item_image", class: "label-box", id: "label-box--#{@item.images.length}" do
+              %pre.label-box__text--visible クリックしてファイルをアップロード
+          .image__container--hidden
+            = f.fields_for :images do |i|
+              = i.file_field :item_image, class: "hidden-field"
+              = i.check_box :_destroy, class: "hidden-checkbox"
+            - @item.images.length.upto(4) do |i|
+              %input{name: "item[images_attributes][#{i}][item_image]", id: "item_images_attributes_#{i}_item_image", class: "hidden-field", type: "file"}
+        .field
+          = f.label :name, "商品名", class: "label__text"
+          %span.required__item 必須
+          = f.text_field :name, autofocus: true, class: "text__field", autocomplete: "name"
+        .field
+          = f.label :price, "価格", class: "label__text"
+          %span.required__item 必須
+          = f.text_field :price, class: "text__field"
+        .field
+          = f.label :explain, "商品紹介", class: "label__text"
+          %span.required__item 任意
+          = f.text_area :explain, class: "text__field--wide"
+        .field
+          = f.label :size, "サイズ", class: "label__text"
+          %span.required__item 必須
+          = f.select :size, Item.sizes.keys, {}, {class: "text__field--half"}
+
+        .categry__form
+          .field{id: "category__box--parent"}
+            = f.label :category, "カテゴリー", class: "label__text"
+            %span.required__item 必須
+            = f.collection_select :category, Category.all.limit(10), :id, :name, {prompt: "---"}, {class: "text__field--half", id: "parent-form"}
+
+        = f.fields_for :brand do |b|
+          .field
+            = b.label :brand, "ブランド", class: "label__text"
+            %span.required__item 必須
+            = b.select :brand, Brand.brands.keys, {}, {class: "text__field--half"}
+        .field
+          = f.label :postage, "送料", class: "label__text"
+          %span.required__item 必須
+          = f.select :postage, Item.postages.keys, {}, {class: "text__field--half"}
+        .field
+          = f.label :shipping_date, "発送日の目安", class: "label__text"
+          %span.required__item 必須
+          = f.select :shipping_date, Item.shipping_dates.keys, {}, {class: "text__field--half"}
+        .field
+          = f.label :gender, "性別タイプ", class: "label__text"
+          %span.required__item 必須
+          = f.select :gender, Item.genders.keys, {}, {class: "text__field--half"}
+        .field__hidden
+          = f.hidden_field :shop_id, value: params[:shop_id]
+
+        .actions
+          = f.submit "出品する", class: "submit-btn"
+
+  .blank__space

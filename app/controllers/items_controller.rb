@@ -1,4 +1,7 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:show, :edit, :update]
+  before_action :set_shop, only: [:edit, :update]
+
   def new
     @item = Item.new
     @item.build_brand
@@ -15,13 +18,17 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def edit
   end
 
   def update
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   def search_child
@@ -37,5 +44,13 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :price, :explain, :size, :postage, :shipping_date, :gender, :shop_id, :category_id, brand_attributes: [:brand], images_attributes: [:item_image, :_destroy, :id]).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
+  def set_shop
+    @shop = Shop.find(params[:id])
   end
 end
