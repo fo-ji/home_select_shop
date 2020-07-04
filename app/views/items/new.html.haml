@@ -39,10 +39,13 @@
           = f.label :size, "サイズ", class: "label__text"
           %span.required__item 必須
           = f.select :size, Item.sizes.keys, {}, {class: "text__field--half"}
-        .field
-          = f.label :category, "カテゴリー", class: "label__text"
-          %span.required__item 必須
-          = f.collection_select :category_id, Category.all.limit(10), :id, :name, {prompt: "---"}, {class: "text__field--half", id: "parent-form"}
+
+        .categry__form
+          .field{id: "category__box--parent"}
+            = f.label :category, "カテゴリー", class: "label__text"
+            %span.required__item 必須
+            = f.collection_select :category, Category.all.limit(10), :id, :name, {prompt: "---"}, {class: "text__field--half", id: "parent-form"}
+
         = f.fields_for :brand do |b|
           .field
             = b.label :brand, "ブランド", class: "label__text"
