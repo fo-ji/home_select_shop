@@ -1,0 +1,100 @@
+.wrapper__item
+  = render "layouts/sub-header"
+
+  .item__container
+    .item__container--all
+      .container__left
+        .container__left--image
+          = image_tag @item.images[0].item_image.url, alt: "main-iamge", class: "main__image"
+        .container__left--thumbnail
+          %ul.thumbnail__list
+          - @item.images.each do |image|
+            %li.thumbnail__list--item
+              = image_tag image.item_image.url, alt: "preview", class: "sub__image"
+
+      .container__right
+        .container__right--info
+
+          .info__intro
+            .info__intro--shop
+              = "ショップ：" + @item.shop.name
+            .info__intro--brand
+              = "ブランド：" + @item.brand.brand
+            %h1.info__intro--name
+              = @item.name
+            .info__intro--price
+              = "¥ #{@item.price.to_s(:delimited)}"
+              %small.info__intro--price-tax 税込
+            .info__intro--favorite
+              .favorite__icon
+                = icon("far", "heart")
+              .favorite__text お気に入りアイテム登録数：
+              .favorite__count
+                = "○○人(仮置き！)"
+
+          .info__trade
+            .info__trade--nav
+              .nav__btn--buy
+                .nav__btn--buy-icon
+                  = icon("fas", "cash-register")
+                .nav__btn--buy-text 今すぐ購入する
+              .nav__btn--cart
+                .nav__btn--cart-icon
+                  = icon("fas", "shopping-cart")
+                .nav__btn--cart-text カートに入れる
+
+          .info__explain
+            .info__explain--title アイテム説明
+            .info__explain--text
+              = @item.explain
+            .info__explain--detail
+              %dl.detail__box
+                .detail__box--list
+                  %dt.detail__box--list-key 性別タイプ
+                  %span :
+                  %dd.detail__box--list-value
+                    = @item.gender
+                .detail__box--list
+                  %dt.detail__box--list-key カテゴリー
+                  %span :
+                  %dd.detail__box--list-value
+                    = @item.category.parent.name + "＞" + @item.category.name
+                .detail__box--list
+                  %dt.detail__box--list-key サイズ
+                  %span :
+                  %dd.detail__box--list-value
+                    = @item.size
+                .detail__box--list
+                  %dt.detail__box--list-key 送料
+                  %span :
+                  %dd.detail__box--list-value
+                    = @item.postage
+                .detail__box--list
+                  %dt.detail__box--list-key 配送日(目安)
+                  %span :
+                  %dd.detail__box--list-value
+                    = @item.shipping_date
+
+          .info__stylist
+            .info__stylist--title スタイリスト詳細
+            .info__stylist--text
+              = "スタイリスト名：" + @item.user.nickname + "さん"
+            .info__stylist--detail
+              %dl.detail__box
+                .detail__box--list
+                  %dt.detail__box--list-key 身長
+                  %span :
+                  %dd.detail__box--list-value
+                    = @item.user.height
+                    %span cm
+                .detail__box--list
+                  %dt.detail__box--list-key 体重
+                  %span :
+                  %dd.detail__box--list-value
+                    = @item.user.body_weight
+                    %span kg
+                .detail__box--list
+                  %dt.detail__box--list-key 足のサイズ
+                  %span :
+                  %dd.detail__box--list-value
+                    = @item.user.foot_size
