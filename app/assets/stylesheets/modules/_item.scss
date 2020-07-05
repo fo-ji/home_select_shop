@@ -29,13 +29,13 @@
 
           .thumbnail__list {
             display: flex;
+            margin: 0 auto;
           
             &--item {
+              display: inline-block;
               list-style: none;
               width: 36px;
-              margin: 15px 0 0 22px;
-              vertical-align: top;
-              text-align: left!important;
+              margin: 15px 20px 0 32px;
               
               .sub__image {
                 display: inline-block;
@@ -144,6 +144,7 @@
               }
             }
           }
+          
           .info__explain, .info__stylist {
             margin: 30px 0 24px;
 
