@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_07_05_091746) do
   end
 
   create_table "cart_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "quantity", default: 0
+    t.integer "quantity", default: 1
     t.bigint "item_id", null: false
     t.bigint "cart_id", null: false
     t.datetime "created_at", null: false
