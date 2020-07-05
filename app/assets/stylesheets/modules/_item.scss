@@ -59,12 +59,12 @@
 
             &--shop {
               font-size: 15px;
-              color: #646464;
+              color: $fontColorDarkgray;
             }
 
             &--brand {
               font-size: 15px;
-              color: #646464;
+              color: $fontColorDarkgray;
             }
 
             &--name {
@@ -77,10 +77,10 @@
               margin-bottom: 15px;
               font-size: 29px;
               line-height: 1.2931034483;
-              color: #e73656;
+              color: $fontColorRed;
 
               &-tax {
-                color: #e73656;
+                color: $fontColorRed;
                 font-size: 12px;
                 margin-left: 3px;
               }
@@ -91,26 +91,26 @@
               display: flex;
 
               .favorite__icon {
-                color: #646464;
+                color: $fontColorDarkgray;
                 margin-right: 5px;
               }
 
               .favorite__text {
-                color: #646464;
+                color: $fontColorDarkgray;
                 margin-right: 1px;
               }
 
               .favorite__count {
-                color: #646464;
+                color: $fontColorDarkgray;
               }
             }
           }
 
           .info__trade {
-            border-bottom: 1px solid #dcdcdc;
+            border-bottom: 1px solid $borderColorGray;
 
             &--nav {
-              border-top: 1px solid #dcdcdc;
+              border-top: 1px solid $borderColorGray;
               width: 100%;
 
               .nav__btn--buy, .nav__btn--cart {
@@ -144,7 +144,7 @@
               }
             }
           }
-          
+
           .info__explain, .info__stylist {
             margin: 30px 0 24px;
 
@@ -153,18 +153,16 @@
               margin-top: 30px;
               margin: -1px 0;
               padding: 5px 0 0;
-              color: #2d2d2d;
               font-size: 15px;
             }
 
             &--text {
               padding: 25px 0 0;
               font-size: 13px;
-              color: #2d2d2d;
             }
 
             &--detail {
-              background: #f0f0f0;
+              background: $backgroundColorGray;
               margin-top: 20px;
               padding: 15px 15px 13px;
 
