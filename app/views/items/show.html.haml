@@ -41,7 +41,8 @@
               .nav__btn--cart
                 .nav__btn--cart-icon
                   = icon("fas", "shopping-cart")
-                .nav__btn--cart-text カートに入れる
+                .nav__btn--cart-text
+                  = link_to "カートに入れる", add_item_path(item_id: @item.id), method: :post
 
           .info__explain
             .info__explain--title アイテム説明
