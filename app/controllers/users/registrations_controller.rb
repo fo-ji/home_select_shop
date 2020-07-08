@@ -8,7 +8,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def new
     @user = User.new
     @user.build_address
-    @user.build_credit_card
   end
 
   # POST /resource
@@ -49,7 +48,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :nickname, :avatar, :introduction, :first_name, :last_name, :first_name_kana, :last_name_kana, :birthday, :height, :body_weight, :foot_size, address_attributes: [:postal_code, :prefecture, :city, :address, :apartment, :phone_number], credit_card_attributes: [:card_company, :card_number, :card_year, :card_month, :card_pass])
+    params.require(:user).permit(:email, :password, :password_confirmation, :nickname, :avatar, :introduction, :first_name, :last_name, :first_name_kana, :last_name_kana, :birthday, :height, :body_weight, :foot_size, address_attributes: [:postal_code, :prefecture, :city, :address, :apartment, :phone_number])
   end
 
   # If you have extra params to permit, append them to the sanitizer.

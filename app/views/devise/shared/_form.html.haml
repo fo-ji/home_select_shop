@@ -77,27 +77,6 @@
         = a.label :phone_number, "電話番号(半角)", class: "label__text"
         %span.required__item 必須
         = a.telephone_field :phone_number, placeholder: "例）0312345678", class: "text__field--half"
-
-    = f.fields_for :credit_card do |c|
-      .field
-        = c.label :card_number, "カード番号(半角)", class: "label__text"
-        %span.required__item 必須
-        = c.text_field :card_number, class: "text__field", maxlength:"16"
-      .field
-        = c.label :card_company, "カード会社", class: "label__text"
-        %span.required__item 必須
-        = c.select :card_company, CreditCard.card_companies.keys, {}, {class: "text__field--half"}
-      .field
-        = c.label :有効期限, class: "label__text"
-        %span.required__item 必須
-        = c.select :card_month, options_for_select(["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]), {}, {class: "text__field--half"}
-        = c.label :月, class: "card__year-and-month"
-        = c.select :card_year, options_for_select((2020..2030)), {}, {class: "text__field--half"}
-        = c.label :年, class: "card__year-and-month"
-      .field
-        = c.label :card_pass, "セキュリティコード", class: "label__text"
-        %span.required__item 必須
-        = c.text_field :card_pass, placeholder: "カード背面3~4桁の番号", class: "text__field--half"
     .actions
       = f.submit "会員登録する", class: "submit-btn"
 .blank__space
