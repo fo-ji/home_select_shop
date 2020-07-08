@@ -10,7 +10,6 @@ class User < ApplicationRecord
   has_many   :shops, through: :stylists
 
   accepts_nested_attributes_for :address
-  accepts_nested_attributes_for :credit_card
 
   validates :nickname, presence: true, uniqueness: true, on: [:create, :edit]
   validates :first_name, :last_name, :first_name_kana, :last_name_kana, :birthday, presence: true, on: [:create, :edit]
