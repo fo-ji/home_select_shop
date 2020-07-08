@@ -3,9 +3,10 @@ class CartsController < ApplicationController
 
   def show
     @cart_items = current_cart.cart_items
+    @numbers = [*(1..5)]
+    @cart_item_sum = Item.all.sum(:price)
   end
 
-  # 商品一覧画面から、「商品購入」を押した時のアクション
   def add_item
     if @cart_item.blank?
       @cart_item = current_cart.cart_items.build(item_id: params[:item_id])
@@ -13,19 +14,17 @@ class CartsController < ApplicationController
 
     @cart_item.quantity += params[:quantity].to_i
     @cart_item.save
-    redirect_to cart_path(@cart.id)
+    redirect_to current_cart
   end
 
-  # カート詳細画面から、「更新」を押した時のアクション
   def update_item
     @cart_item.update(quantity: params[:quantity].to_i)
-    redirect_to cart_path(@cart.id)
+    redirect_to current_cart
   end
 
-  # カート詳細画面から、「削除」を押した時のアクション
   def delete_item
     @cart_item.destroy
-    redirect_to cart_path(@cart.id)
+    redirect_to current_cart
   end
 
   private
