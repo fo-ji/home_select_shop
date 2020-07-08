@@ -35,6 +35,7 @@
                     = link_to "削除", delete_item_path(item_id: cart_item.item.id), method: :delete
         .cart__item--total
           .cart__item--total-text 商品合計
-          .cart__item--total-price ¥(未実装)
+          .cart__item--total-price
+            = "¥ #{(@cart.total_price).to_s(:delimited)}"
         .cart__item--buy
           = link_to "購入する(未実装)", "#"

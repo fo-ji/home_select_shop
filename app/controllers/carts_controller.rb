@@ -4,7 +4,6 @@ class CartsController < ApplicationController
   def show
     @cart_items = current_cart.cart_items
     @numbers = [*(1..5)]
-    @cart_item_sum = Item.all.sum(:price)
   end
 
   def add_item
