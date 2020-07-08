@@ -35,15 +35,15 @@ Rails.application.routes.draw do
 
   resources :carts, only: [:show]
 
-  post '/add_item' => 'carts#add_item'
-  post '/update_item' => 'carts#update_item'
-  delete '/delete_item' => 'carts#delete_item'
+  post "/add_item"      => "carts#add_item"
+  post "/update_item"   => "carts#update_item"
+  delete "/delete_item" => "carts#delete_item"
 
-  resources :credit_card, only: [:new, :show] do
+  resources :credit_cards, only: [:new, :show] do
     collection do
-      post "show", to: "card#show"
-      post "pay", to: "card#pay"
-      post "delete", to: "card#delete"
+      post "show",   to: "credit_cards#show"
+      post "pay",    to: "credit_cards#pay"
+      post "delete", to: "credit_cards#delete"
     end
   end
 end
