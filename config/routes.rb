@@ -40,4 +40,12 @@ Rails.application.routes.draw do
   post '/add_item' => 'carts#add_item'
   post '/update_item' => 'carts#update_item'
   delete '/delete_item' => 'carts#delete_item'
+
+  resources :credit_card, only: [:new, :show] do
+    collection do
+      post "show", to: "card#show"
+      post "pay", to: "card#pay"
+      post "delete", to: "card#delete"
+    end
+  end
 end
