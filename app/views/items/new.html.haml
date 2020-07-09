@@ -63,6 +63,10 @@
           = f.label :gender, "性別タイプ", class: "label__text"
           %span.required__item 必須
           = f.select :gender, Item.genders.keys, {}, {class: "text__field--half"}
+        .field
+          = f.label :stock, "在庫数", class: "label__text"
+          %span.required__item 必須
+          = f.number_field :stock, min: 1, max: 300, class: "text__field--half"
         .field__hidden
           = f.hidden_field :shop_id, value: params[:shop_id]
 

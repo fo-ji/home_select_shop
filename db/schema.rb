@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2020_07_05_091746) do
     t.integer "postage", default: 1, null: false
     t.integer "shipping_date", default: 1, null: false
     t.integer "gender", default: 1, null: false
+    t.integer "stock", default: 1, null: false
     t.bigint "user_id", null: false
     t.bigint "shop_id", null: false
     t.bigint "brand_id", null: false
