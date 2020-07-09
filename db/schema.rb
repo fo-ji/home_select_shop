@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_05_091746) do
+ActiveRecord::Schema.define(version: 2020_07_09_144507) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postal_code", null: false
@@ -70,6 +70,17 @@ ActiveRecord::Schema.define(version: 2020_07_05_091746) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_images_on_item_id"
+  end
+
+  create_table "item_payments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "purchase_amount", null: false
+    t.string "charge_id"
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_item_payments_on_item_id"
+    t.index ["user_id"], name: "index_item_payments_on_user_id"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -151,6 +162,8 @@ ActiveRecord::Schema.define(version: 2020_07_05_091746) do
   add_foreign_key "cart_items", "items"
   add_foreign_key "credit_cards", "users"
   add_foreign_key "images", "items"
+  add_foreign_key "item_payments", "items"
+  add_foreign_key "item_payments", "users"
   add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "shops"
