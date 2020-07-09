@@ -77,6 +77,27 @@
               }
             }
           }
+
+          .form__content {
+            .actions {
+              .submit-btn {
+                width: 270px;
+                margin: 25px auto 0 auto;
+                font-size: 14px;
+                color: #ffffff;
+                display: block;
+                text-align: center;
+                border-radius: 2px;
+                padding: 11px 0 8px;
+                background: $fontColorRed;
+                cursor: pointer;
+                position: relative;
+                z-index: 1;
+                border: 0;
+                -webkit-appearance: none;
+              }
+            }
+          }
         }
       }
     }
