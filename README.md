@@ -1,43 +1,87 @@
 # README
 
-<!-- ![Image from Gyazo](https://gyazo.com/6a8ea91986422ee494d2b0153749c315.jpg) -->
+# HomeSelectShop
+
+[![Image from Gyazo](https://i.gyazo.com/c4931363e3f5d872b6bdc04709df979a.gif)](https://gyazo.com/c4931363e3f5d872b6bdc04709df979a)
 
 # このアプリについて
 
- - 制作期間: 2020/6/8 ~
- - 使用Gemや機能は以下に記載
+**『アパレル小型店舗向けのECサイト』**を制作しました。
+個人経営の地方にあるショップをメインのターゲットにしています。
+
+コンセプトは「販売チャンネルの拡大、ファッションに関わらず情報発信の場を提供する」です。
+
+コロナ渦の中、対面販売がメインになっている店舗は特に、大きな打撃を受けたのではないでしょうか。。
+
+個人的な意見ですが、ファッションは売れてるものだけが売れる時代になると少し寂しいです。。
+カルチャーの要素が強い地方ショップが少しでも盛り上がれば・・と考えながら制作しました！
+
+### 特徴
+ - スタイリストの体型を公開
+  * 自分の体型に合ったスタイリストを見つけられます
+ [![Image from Gyazo](https://i.gyazo.com/5be66604bf509314ece06ddabab4ed8b.gif)](https://gyazo.com/5be66604bf509314ece06ddabab4ed8b)
+ - コミュニティ機能(**未実装**)
+  * ファッション以外にもおすすめ音楽や雑貨など、コミュニティ内のトークを通じてショップが独自に情報発信出来きます
+  * いいね機能で発信した情報の反応を見れます。(**未実装**)
+ - コーディネート商品の出品/購入機能(**未実装**)
+  * 5つのアイテムをまとめて出品、まとめて購入できます
+
+### 詳細説明
+
+ - 制作期間: 2020/6/8 ~ 
+ - ユーザー管理機能 (**SNS認証は未実装**)
+ - 誰でもショップ登録が可能
+  * ショップ登録者とスタイリストは商品出品/編集を行うことができる。
+ - 商品の購入機能(**現在実装中**)
+  * 「カートにいれる」→「カート詳細ページ」→「クレジットカードによる購入」のフローです。
+ [![Image from Gyazo](https://i.gyazo.com/167ba58a09d8dc56f36ab32a8521fbc1.gif)](https://gyazo.com/167ba58a09d8dc56f36ab32a8521fbc1)
+  * 「今すぐ購入」→「クレジットカードによる購入」も可能です。
+ - 商品をまとめて出品/購入(**未実装**)
+  * 出品済みのアイテムを(最大5個)まとめて「コーディネート商品」として出品/購入することができます。
+ - カテゴリ機能(親、子の2階層)
+ [![Image from Gyazo](https://i.gyazo.com/61053274ea782ae01d37c63f8136d3a4.gif)](https://gyazo.com/61053274ea782ae01d37c63f8136d3a4)
+ - 画像のプレビュー機能
+ [![Image from Gyazo](https://i.gyazo.com/9878685f9afe28f2403716e2cfdd9e38.gif)](https://gyazo.com/9878685f9afe28f2403716e2cfdd9e38)
+ - 検索機能(**未実装**)
+  * 全商品
+  * カテゴリー別
+  * ブランド別
+  * ショップ別
+  * スタイリスト別
+ - 商品閲覧ランキング(**未実装**)
+  * ユーザーによく閲覧されている人気の商品をランキングで表示します。
+ - 注文履歴機能(**未実装**)
+  * 過去の取引履歴を確認できます。
+ - お気に入り機能(**未実装**)
+  * 気になる商品やショップを登録し、すぐにアクセスできるようにします
+ - 在庫数管理機能(**未実装**)
+  * 出品したアイテムの在庫数を管理できます。
 
 # 制作
 
 <a href="https://github.com/fo-ji"><img src="https://avatars0.githubusercontent.com/u/57491651?s=460&v=4" height="100px;" /></a>
 
-# Gem/ver
+# 環境/Gem(ver)
 
-* Ruby:2.5.1
+* Ruby (2.5.1)
+* Rails (5.2.4.3)
+* Docker
+* MySQL (development)
+* PostgreSQL (production)
+* Heroku
+* CircleCI
 
-* Rails:5.2.4.３
-
-* System dependencies
-
- <!-- - gem 'mysql2':0.3.18
- - gem 'sass-rails:5.0
  - gem 'jquery-rails'
  - gem 'jbuilder', '~> 2.5'
- - gem 'capistrano'
  - gem 'rspec-rails'
  - gem 'rails-controller-testing'
  - gem 'factory_bot_rails'
  - gem 'pry-rails'
  - gem 'carrierwave'
- - gem 'fog-aws'
- - gem 'unicorn':5.4.1
- - gem 'faker':2.8
  - gem 'mini_magick'
  - gem 'font-awesome-sass'
  - gem 'haml-rails'
- - gem 'owlcarousel-rails'
  - gem 'devise'
- - gem 'active_hash'
  - gem 'ancestry'
  - gem 'omniauth-facebook'
  - gem 'omniauth-google-oauth2'
@@ -45,13 +89,13 @@
  - gem 'gretel'
  - gem 'payjp'
  - gem 'ransack' 
- - gem 'kaminari' -->
+ - gem 'kaminari'
 
 ## サイトURL
-
+https://home-select-shop.herokuapp.com/
 
 ## ER図
-
+![HomeSelectShop_個人アプリ](https://user-images.githubusercontent.com/57491651/87151558-0aa85e00-c2ef-11ea-9bf3-7803c61043f1.png)
 
 # テーブル
 ## Usersテーブル
@@ -83,16 +127,12 @@
 - has_many :shops, through: :stylists
 - has_many :messages
 - has_many :likes
+- has_many :item_payments
 
-## Credit-cardsテーブル
+## Credit_cardsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|card_company|integer   |null: false|
-|card_number |string    |null: false|
-|card_year   |integer   |null: false|
-|card_month  |integer   |null: false|
-|card_pass   |integer   |null: false|
 |customer_id |string    |null: false|
 |card_id     |string    |null: false|
 |user        |references|null: false, foreign_key: true|
@@ -230,8 +270,9 @@
 |explain      |text      |null: false|
 |size         |string    |null: false|
 |postage      |string    |null: false|
-|prefecture   |integer   |null: false|
 |shipping_date|string    |null: false|
+|gender       |integer   |null: false|
+|stock        |integer   |null: false|
 
 ### Association
 - belongs_to :shop
@@ -241,6 +282,7 @@
 - has_many   :messages
 - has_many   :likes
 - has_many   :cart_items
+- has_many   :item_payments
 
 ## Cart_itemsテーブル
 
@@ -263,7 +305,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|brand|integer|null: false|
 
 ### Association
 - has_many :items
@@ -280,9 +322,23 @@
 
 ## Imagesテーブル
 
+|Column|Type|Options|
 |------|----|-------|
 |item_image|string    |null: false|
 |item      |references|null: false, foreign_key: true|
 
 ### Association
+- belongs_to :item
+
+## Item_paymentsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|purchase_amount|integer   |null: false|
+|charge_id      |string    ||
+|user           |references|null: false, foreign_key: true|
+|item           |references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
 - belongs_to :item
