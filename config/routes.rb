@@ -31,8 +31,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :items, only: :show
-
+  resources :items, only: :show do
+    resources :item_payments, only: :create
+  end
+  
   resources :carts, only: [:show]
 
   post "/add_item"      => "carts#add_item"

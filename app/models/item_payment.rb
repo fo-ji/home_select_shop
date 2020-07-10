@@ -6,10 +6,11 @@ class ItemPayment < ApplicationRecord
   validate :validate_purchase_amount_for_stock
 
   private
-    def validate_purchase_amount_for_stock
-      if self.purchase_amount.present?
-        stock = self.item.stock
-        errors.add(:purchase_amount, "購入できるのは#{stock}個までです") if self.purchase_amount > stock
-      end
+  
+  def validate_purchase_amount_for_stock
+    if self.purchase_amount.present?
+      stock = self.item.stock
+      errors.add(:purchase_amount, "購入できるのは#{stock}個までです") if self.purchase_amount > stock
     end
+  end
 end

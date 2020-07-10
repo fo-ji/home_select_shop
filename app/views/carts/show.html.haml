@@ -34,8 +34,19 @@
                   .item__delete--item
                     = link_to "削除", delete_item_path(item_id: cart_item.item.id), method: :delete
         .cart__item--total
-          .cart__item--total-text 商品合計
+          .cart__item--total-text 合計数量
+          .cart__item--total-quantity
+            = "#{(@cart.total_quantity).to_i} 個"
+        .cart__item--total
+          .cart__item--total-text 合計金額
           .cart__item--total-price
             = "¥ #{(@cart.total_price).to_s(:delimited)}"
         .cart__item--buy
           = link_to "購入する(未実装)", "#"
+          -# .nav__btn--buy
+          -#   - @cart.cart_items.each do |cart_item|
+          -#     = form_with(model: @item_payment, url: item_item_payments_path(cart_item.item.id), class: "buy__form") do |f|
+          -#       = f.label :purchase_amount, "購入数", class: "label__text"
+          -#       = f.hidden_field :purchase_amount, value: cart_item.quantity
+          -#       = f.hidden_field :user_id, value: current_user.id
+          -#       %script.payjp-button{"data-key": "pk_test_7909da3d557868a5ca4eddd3", src: "https://checkout.pay.jp", type: "text/javascript", "data-text": "購入する", class: "input-btn"}
