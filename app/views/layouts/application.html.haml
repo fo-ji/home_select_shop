@@ -10,5 +10,8 @@
     = javascript_include_tag 'application'
   %body
     = render "layouts/header"
+    .notifications
+      - flash.each do |key, value|
+        = content_tag(:div, value, class: key)
     = yield
     = render "layouts/footer"
