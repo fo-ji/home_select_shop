@@ -39,7 +39,6 @@
                   = f.label :purchase_amount, "購入数", class: "label__text"
                   = f.number_field :purchase_amount, min: 1, max: 5, class: "number-field"
                   %span.space-word 個
-                  = f.hidden_field :user_id, value: current_user.id
                   %script.payjp-button{"data-key": "pk_test_7909da3d557868a5ca4eddd3", src: "https://checkout.pay.jp", type: "text/javascript", "data-text": "今すぐ購入する", class: "input-btn"}
               .nav__btn--cart
                 .nav__btn--cart-text
