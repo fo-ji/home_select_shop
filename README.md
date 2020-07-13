@@ -2,6 +2,10 @@
 
 # HomeSelectShop
 
+ - サイトURL: https://home-select-shop.herokuapp.com/
+ - ログインID: 
+ - パスワード:
+
 [![Image from Gyazo](https://i.gyazo.com/c4931363e3f5d872b6bdc04709df979a.gif)](https://gyazo.com/c4931363e3f5d872b6bdc04709df979a)
 
 # このアプリについて
@@ -90,9 +94,6 @@
  - gem 'payjp'
  - gem 'ransack' 
  - gem 'kaminari'
-
-## サイトURL
-https://home-select-shop.herokuapp.com/
 
 ## ER図
 ![HomeSelectShop_個人アプリ](https://user-images.githubusercontent.com/57491651/87151558-0aa85e00-c2ef-11ea-9bf3-7803c61043f1.png)
