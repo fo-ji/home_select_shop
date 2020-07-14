@@ -168,6 +168,13 @@
             }
           }
 
+          .attention__message {
+            font-weight: bold;
+            font-size: 20px;
+            margin-top: 30px;
+            color: $fontColorRed;
+          }
+
           .info__explain, .info__stylist {
             margin: 30px 0 24px;
 
