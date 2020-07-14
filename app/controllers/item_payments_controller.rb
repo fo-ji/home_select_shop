@@ -11,9 +11,10 @@ class ItemPaymentsController < ApplicationController
 
       respond_to do |format|
         if @item_payment.save
+          @item.update(stock: @item.stock - @item_payment.purchase_amount)
           format.html { redirect_to item_path(@item), notice: "購入完了しました。" }
         else
-          format.html { redirect_to item_path(@item), alert: "数量をを確認してください。" }
+          format.html { redirect_to item_path(@item), alert: "数量を確認してください。" }
       end
     end
   end
@@ -28,5 +29,9 @@ class ItemPaymentsController < ApplicationController
 
   def item_payment_params
     params.permit(:purchase_amount, :item_id, :user_id)
+  end
+
+  def item_update_params
+    params.require(:item).permit(:stock)
   end
 end
