@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_shop, only: [:edit, :update]
+  before_action :set_shop, only: [:edit, :update, :destroy]
 
   def new
     @item = Item.new
@@ -52,9 +52,9 @@ class ItemsController < ApplicationController
     end
   end
 
-  def destroy 
+  def destroy
     if @item.destroy
-      redirect_to admin_index_shop_path
+      redirect_to admin_index_shop_path(@shop)
     else
       render :admin
     end
@@ -71,6 +71,6 @@ class ItemsController < ApplicationController
   end
 
   def set_shop
-    @shop = Shop.find(params[:id])
+    @shop = @item.shop
   end
 end

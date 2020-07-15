@@ -38,8 +38,8 @@
                     = "¥ #{item.price.to_s(:delimited)}"
                   .item__btn
                     .item__btn--edit
-                      = link_to "編集", edit_shop_item_path(item.shop, item.id), class: "edit__btn"
+                      = link_to "編集", edit_shop_item_path(@shop, item), class: "edit__btn"
                     .item__btn--delete
-                      = link_to "削除", shop_item_path(item.shop, item.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "delete__btn"
+                      = link_to "削除", shop_item_path(@shop, item), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "delete__btn"
 
   .blank__space
