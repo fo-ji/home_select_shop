@@ -52,5 +52,21 @@
               - @shop.users.each do |stylist|
                 .stylist__name
                   = stylist.nickname + "さん"
+          %li.info__list
+            .info__list--label オフィシャルサイト
+            .info__list--value
+              = @shop.official_site
+          %li.info__list
+            .info__list--label facebookアカウント
+            .info__list--value
+              = @shop.facebook_account
+          %li.info__list
+            .info__list--label LINEアカウント
+            .info__list--value
+              = @shop.line_account
+          %li.info__list
+            .info__list--label Instagramアカウント
+            .info__list--value
+              = @shop.instagram_account
 
   .blank__space
