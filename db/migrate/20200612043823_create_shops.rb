@@ -11,6 +11,10 @@ class CreateShops < ActiveRecord::Migration[5.2]
       t.string  :address,      null: false
       t.string  :apartment
       t.string  :phone_number, null: false
+      t.text    :official_site
+      t.text    :facebook_account
+      t.text    :line_account
+      t.text    :instagram_account
       t.timestamps
     end
 
