@@ -40,6 +40,22 @@
     = f.label :phone_number, "電話番号(半角)", class: "label__text"
     %span.required__item 必須
     = f.telephone_field :phone_number, placeholder: "例）0312345678", class: "text__field--half"
+  .field
+    = f.label :official_site, "オフィシャルサイト", class: "label__text"
+    %span.required__item 任意
+    = f.text_field :official_site, placeholder: "例）https://www.sample.com/", class: "text__field"
+  .field
+    = f.label :facebook_account, "facebookアカウント", class: "label__text"
+    %span.required__item 任意
+    = f.text_field :facebook_account, placeholder: "例）https://www.facebook.com/sample", class: "text__field"
+  .field
+    = f.label :line_account, "LINEアカウント", class: "label__text"
+    %span.required__item 任意
+    = f.text_field :line_account, placeholder: "例）https://www.linebiz.com/jp/sample/", class: "text__field"
+  .field
+    = f.label :instagram_account, "Instagramアカウント", class: "label__text"
+    %span.required__item 任意
+    = f.text_field :instagram_account, placeholder: "例）https://www.instagram.com/sample", class: "text__field"
 
   .stylist-form__field
     .stylist-form__field--left

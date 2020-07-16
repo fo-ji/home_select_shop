@@ -119,6 +119,10 @@ ActiveRecord::Schema.define(version: 2020_07_09_144507) do
     t.string "address", null: false
     t.string "apartment"
     t.string "phone_number", null: false
+    t.text "official_site"
+    t.text "facebook_account"
+    t.text "line_account"
+    t.text "instagram_account"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_shops_on_name", unique: true
