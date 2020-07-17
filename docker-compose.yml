@@ -17,6 +17,8 @@ services:
       RAILS_ENV: development
       PAYJP_PRIVATE_KEY: ${PAYJP_PRIVATE_KEY}
       PAYJP_KEY: ${PAYJP_KEY}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
     volumes:
       - .:/home_select_shop
     ports:
