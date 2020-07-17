@@ -30,6 +30,24 @@
               = image_tag "no_image.png", class: "avatar__show"
           .shop__header--title
             = @shop.name
+          .shop__header--link
+            .link__hp
+              .link__hp--label 公式サイト：
+              .link__hp--url
+                = link_to(@shop.official_site, target: :_blank)
+            .link__sns
+              - if @shop.facebook_account.present?
+                .link__sns--facebook
+                  = link_to(@shop.facebook_account, target: :_blank) do
+                    = icon("fab", "facebook-square", class: "link__icon") 
+              - if @shop.line_account.present?
+                .link__sns--line
+                  = link_to(@shop.line_account, target: :_blank) do
+                    = icon("fab", "line", class: "link__icon")
+              - if @shop.instagram_account.present?
+                .link__sns--instagram
+                  = link_to(@shop.instagram_account, target: :_blank) do
+                    = icon("fab", "instagram", class: "link__icon")
         .shop__item--title 商品一覧
         = render "layouts/item-box"
 
