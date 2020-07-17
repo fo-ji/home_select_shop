@@ -4,7 +4,6 @@
   border-bottom: 1px solid $borderColorGray;
 
   &--image {
-
     .avatar__show {
       height: 200px;
       width: 200px;
@@ -14,6 +13,52 @@
   &--title {
     margin: 22px 0 0 0;
     font-size: 22px;
+  }
+
+  &--link {
+    .link__hp {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+
+      &--url {
+        a {
+          color: $fontColorBlue;
+        }
+      }
+    }
+    
+    .link__sns {
+      display: flex;
+      justify-content: center;
+
+      &--facebook {
+        margin-right: 15px;
+
+        .link__icon {
+          font-size: 2em;
+          color: #3B5998;
+        }
+      }
+
+      &--line {
+        margin-right: 15px;
+
+        .link__icon {
+          font-size: 2em;
+          color: limegreen;
+        }
+      }
+
+      &--instagram {
+        .link__icon {
+          font-size: 2em;
+          color:#fff;
+          background:radial-gradient(at 20% 120%,orange, #f15a4d 25%, #f13f79 55%, #9933ff 100%) no-repeat;
+          border-radius:20%;
+        }
+      }
+    }
   }
 }
 
