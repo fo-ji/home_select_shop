@@ -1,5 +1,5 @@
 class CommunitiesController < ApplicationController
-  before_action :set_community, only: [:edit, :update]
+  before_action :set_community, only: [:edit, :update, :leave, :destroy]
 
   def new
     @community = Community.new
@@ -22,6 +22,20 @@ class CommunitiesController < ApplicationController
       redirect_to root_path
     else
       render :edit
+    end
+  end
+
+  def leave
+    @shop = @community.shop
+  end
+
+  def destroy
+    respond_to do |format|
+      if @community.destroy
+        format.html { redirect_to root_path, notice: "削除が完了しました" }
+      else
+        format.html { redirect_to leave_shop_community(@shop.id, @shop.community.id), alert: "削除し失敗しました" }
+      end
     end
   end
 

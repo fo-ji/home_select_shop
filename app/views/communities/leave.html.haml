@@ -1,0 +1,16 @@
+.wrapper__mypage--leave
+  = render "layouts/sub-header"
+
+  .mypage__container
+    %h1.mypage__container--title コミュニティ削除
+    .mypage__container--all
+      = render "shops/side-bar"
+
+      .container__right
+        %ul.container__right--info
+          %li.info__title 削除手続き
+          .container__right--submit
+            = link_to "削除しない", admin_shop_path(@shop.id), class: "submit-btn-white"
+            = link_to "削除する", shop_community_path, class: "submit-btn", method: :delete
+
+  .blank__space
