@@ -1,0 +1,36 @@
+.wrapper__toppage
+
+  .main__container
+    .main__container--left
+
+      %section.container__search
+        %h2.container__search--title メニュー
+        %ul.container__search--list
+          %li.click__list
+            = link_to "コミュニティ一覧"
+          %li.click__list
+            = link_to "レコメンド一覧"
+          %li.click__list
+            = link_to "総合TOPへ戻る", root_path
+
+    .main__container--right
+      %section.container__community
+        %h2.container__community--title コミュニティ一覧
+        .communities__container
+          %ul.communities__container--list
+            - @communities.each do |community|
+              %li.community__list
+                .community__thumbnail
+                  = link_to community_path(community.id) do
+                    .community__thumbnail--image
+                    - if community.avatar.present?
+                      = image_tag community.avatar.url, class: "community__show", size: "120x160"
+                    - else
+                      = image_tag "no_image.png", class: "community__show"
+                  .community__label
+                    = community.name
+                  .community__intro
+                    = community.introduction
+
+        %p.container__community--more
+          = link_to "もっと見る", "#", class: "link__blue"
