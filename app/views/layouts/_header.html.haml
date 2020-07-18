@@ -7,6 +7,8 @@
         = link_to "マイページ", mypage_user_path(current_user), class: "nav__tab"
       .header__nav--logout
         = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav__tab"
+      .header__nav--community
+        = link_to "コミュニティ", communities_path, class: "nav__tab"
       .header__nav--cart
         = link_to "カート", cart_path(current_cart), class: "nav__tab"
       .header__nav--menu
@@ -31,6 +33,8 @@
         = link_to "新規登録", new_user_registration_path, class: "nav__tab"
       .header__nav--login
         = link_to "ログイン", new_user_session_path, class: "nav__tab"
+      .header__nav--community
+        = link_to "コミュニティ", communities_path, class: "nav__tab"
       .header__nav--cart
         .nav__tab カート
       .header__nav--menu

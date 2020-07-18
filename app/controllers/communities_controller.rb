@@ -1,5 +1,10 @@
 class CommunitiesController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
   before_action :set_community, only: [:edit, :update, :leave, :destroy]
+
+  def index
+    @communities = Community.all
+  end
 
   def new
     @community = Community.new

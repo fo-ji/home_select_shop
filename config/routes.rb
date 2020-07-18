@@ -36,6 +36,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :communities, only: :index
+
   resources :items, only: :show do
     resources :item_payments, only: :create
   end
