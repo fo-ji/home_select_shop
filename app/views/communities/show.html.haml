@@ -1,0 +1,81 @@
+.wrapper__toppage
+
+  .main__container
+    .main__container--left
+
+      %section.container__search
+        %h2.container__search--title メニュー
+        %ul.container__search--list
+          %li.click__list
+            = link_to "コミュニティ一覧", communities_path
+          %li.click__list
+            = link_to "レコメンド一覧"
+          %li.click__list
+            = link_to "総合TOPへ戻る", root_path
+
+    .main__container--right
+      %section.container__community
+        %h2.container__community--title
+          = "#{@community.name}のページ"
+        .communities__container
+
+          .communities__container--basic
+            .basic__title
+              %span 基本情報
+            .basic__content
+              .basic__content--name
+                .content--label コミュニティ名：
+                .content--text
+                  = @community.name
+              .basic__content--avatar
+                .content--thumbnail
+                  .content__thumbnail--image
+                  - if @community.avatar.present?
+                    = image_tag @community.avatar.url, class: "community__show", size: "220x260"
+                  - else
+                    = image_tag "no_image.png", class: "community__show"
+              .basic__content--count
+                .content__label 参加者数：
+                .content--text 仮置き！
+              .basic__content--owner
+                .content__label オーナー名：
+                .content--text
+                  = @community.owner
+
+
+              .basic__content--join
+                .content__require
+                  %span コミュニティに参加するとトークに参加できるようになります。
+                .content__join コミュニティに参加する
+
+
+              .basic__content--intro
+                .content__label 紹介文：
+                .content--text
+                  = @community.introduction
+
+          .communities__container--shop
+            .shop__title
+              %span オーナー/ショップ情報
+            .shop__content
+              .shop__content--name
+                .content--label ショップ名：
+                .content--text
+                  = @community.shop.name
+              .shop__content--hp
+                .content--label 公式サイト：
+                .content--url
+                  = link_to(@community.shop.official_site, target: :_blank)
+              .shop__content--sns
+                - if @community.shop.facebook_account.present?
+                  .link__sns--facebook
+                    = link_to(@community.shop.facebook_account, target: :_blank) do
+                      = icon("fab", "facebook-square", class: "link__icon") 
+                - if @community.shop.line_account.present?
+                  .link__sns--line
+                    = link_to(@community.shop.line_account, target: :_blank) do
+                      = icon("fab", "line", class: "link__icon")
+                - if @community.shop.instagram_account.present?
+                  .link__sns--instagram
+                    = link_to(@community.shop.instagram_account, target: :_blank) do
+                      = icon("fab", "instagram", class: "link__icon")
