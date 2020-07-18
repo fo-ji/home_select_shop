@@ -1,9 +1,9 @@
 class CommunitiesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
-  before_action :set_community, only: [:edit, :update, :leave, :destroy]
+  before_action :set_community, only: [:edit, :update, :show, :leave, :destroy]
 
   def index
-    @communities = Community.all
+    @communities = Community.all.limit(20).order(created_at: "DESC")
   end
 
   def new
@@ -28,6 +28,9 @@ class CommunitiesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def show
   end
 
   def leave
