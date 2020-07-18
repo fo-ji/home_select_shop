@@ -60,9 +60,11 @@ ActiveRecord::Schema.define(version: 2020_07_18_022717) do
     t.string "owner", null: false
     t.text "avatar", null: false
     t.text "introduction", null: false
+    t.bigint "shop_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_communities_on_name", unique: true
+    t.index ["shop_id"], name: "index_communities_on_shop_id"
   end
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -174,6 +176,7 @@ ActiveRecord::Schema.define(version: 2020_07_18_022717) do
   add_foreign_key "addresses", "users"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "items"
+  add_foreign_key "communities", "shops"
   add_foreign_key "credit_cards", "users"
   add_foreign_key "images", "items"
   add_foreign_key "item_payments", "items"

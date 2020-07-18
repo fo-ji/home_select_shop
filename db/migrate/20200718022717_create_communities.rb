@@ -5,6 +5,7 @@ class CreateCommunities < ActiveRecord::Migration[5.2]
       t.string :owner,        null: false, unique: true
       t.text   :avatar,       null: false
       t.text   :introduction, null: false
+      t.references :shop,     null: false, foreign_key: true
       t.timestamps
     end
 

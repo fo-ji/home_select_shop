@@ -1,0 +1,9 @@
+.wrapper__form
+  = render "layouts/sub-header"
+
+  .form__container
+    %h1.form__container--title コミュニティ登録
+    .form__container--contents
+      = render "form", {community: @community}
+
+  .blank__space

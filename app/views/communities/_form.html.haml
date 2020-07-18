@@ -1,0 +1,23 @@
+= form_with(model: [@shop, @community], url: shop_communities_path, local: true) do |f|
+  = render "devise/shared/error_messages", resource: @community
+  .field
+    = f.label :name, "コミュニティ名", class: "label__text"
+    %span.required__item 必須
+    = f.text_field :name, autofocus: true, class: "text__field", autocomplete: "name"
+  .field
+    = f.label :owner, "オーナー名", class: "label__text"
+    %span.required__item 必須
+    = f.text_field :owner, class: "text__field", autocomplete: "email"
+  .field
+    = f.label :avatar, "アバター", class: "label__text"
+    %span.required__item 必須
+    = f.file_field :avatar
+  .field
+    = f.label :introduction, "店舗紹介", class: "label__text"
+    %span.required__item 必須
+    = f.text_area :introduction, class: "text__field--wide"
+  .field__hidden
+    = f.hidden_field :shop_id, value: params[:shop_id]
+
+  .actions
+    = f.submit "登録する", class: "submit-btn"
