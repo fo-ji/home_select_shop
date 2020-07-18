@@ -16,6 +16,8 @@
     = f.label :introduction, "店舗紹介", class: "label__text"
     %span.required__item 必須
     = f.text_area :introduction, class: "text__field--wide"
+  .field__hidden
+    = f.hidden_field :shop_id, value: params[:shop_id]
 
   .actions
     = f.submit "登録する", class: "submit-btn"

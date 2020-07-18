@@ -13,6 +13,6 @@ class CommunitiesController < ApplicationController
   end
 
   def community_params
-    params.require(:community).permit(:name, :owner, :avatar, :introduction)
+    params.require(:community).permit(:name, :owner, :avatar, :introduction, :shop_id)
   end
 end
