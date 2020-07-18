@@ -29,7 +29,7 @@ Rails.application.routes.draw do
       get "admin_index"
       get "leave"
     end
-    resources :communities, only: [:new, :create]
+    resources :communities, only: [:new, :create, :edit, :update]
   end
 
   resources :items, only: :show do

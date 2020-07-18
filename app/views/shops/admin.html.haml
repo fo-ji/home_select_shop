@@ -4,19 +4,7 @@
   .mypage__container
     %h1.mypage__container--title ショップ情報
     .mypage__container--all
-      .container__left
-        .container__left--menu
-          = link_to "ショップ情報変更", edit_shop_path(@shop.id), class: "menu__title"
-        .container__left--menu
-          = link_to "アイテム出品", new_shop_item_path(@shop.id), class: "menu__title"
-        .container__left--menu
-          = link_to "出品商品一覧", admin_index_shop_path(@shop.id), class: "menu__title"
-        .container__left--menu
-          = link_to "コミュニティ作成", new_shop_community_path(@shop.id), class: "menu__title"
-        .container__left--menu
-          = link_to "販売履歴", "#", class: "menu__title"
-        .container__left--menu
-          = link_to "退会", leave_shop_path, class: "menu__title"
+      = render "side-bar"
 
       .container__right
         %ul.container__right--info
