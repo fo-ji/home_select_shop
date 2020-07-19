@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     member do
       get "join"
     end
+    resources :talks, only: [:index, :create]
   end
 
   resources :items, only: :show do
