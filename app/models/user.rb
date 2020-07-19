@@ -9,8 +9,8 @@ class User < ApplicationRecord
   has_many   :stylists
   has_many   :shops, through: :stylists
   has_many   :item_payments
-  has_many   :communities_users
-  has_many   :communities, through: :communities_users
+  has_many   :community_users
+  has_many   :communities, through: :community_users
 
   accepts_nested_attributes_for :address
 
