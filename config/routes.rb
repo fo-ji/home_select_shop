@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     namespace :api do
       resources :talks, only: :index, defaults: { format: "json" }
     end
+    resources :recommends, only: [:index, :new, :create]
   end
 
   resources :items, only: :show do

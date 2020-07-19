@@ -1,0 +1,25 @@
+.wrapper__toppage
+
+  .main__container
+    .main__container--left
+
+      %section.container__search
+        %h2.container__search--title メニュー
+        %ul.container__search--list
+          %li.click__list
+            = link_to "コミュニティ一覧", communities_path
+          %li.click__list
+            = link_to "総合TOPへ戻る", root_path
+
+    .main__container--right
+      %section.container__community
+        %h2.container__community--title
+          = "#{@community.name}のページ"
+        .communities__container
+
+          .communities__container--recommend
+            .recommend__title
+              %span レコメンド
+            
+            .recommend__new
+              = link_to "レコメンドを作成する", new_community_recommend_path(@community)
