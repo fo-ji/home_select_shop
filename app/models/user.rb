@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many   :item_payments
   has_many   :community_users
   has_many   :communities, through: :community_users
+  has_many   :talks, dependent: :destroy
 
   accepts_nested_attributes_for :address
 
