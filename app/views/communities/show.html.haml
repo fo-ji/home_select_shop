@@ -36,18 +36,22 @@
                     = image_tag "no_image.png", class: "community__show"
               .basic__content--count
                 .content__label 参加者数：
-                .content--text 仮置き！
+                .content--text
+                  = "#{@community.users.count}人"
               .basic__content--owner
                 .content__label オーナー名：
                 .content--text
                   = @community.owner
 
-
               .basic__content--join
                 .content__require
                   %span コミュニティに参加するとトークに参加できるようになります。
-                .content__join コミュニティに参加する
-
+                - unless @community.users.include?(current_user)
+                  .content__join
+                    = link_to "参加する", join_community_path(@community), class: "join__blue"
+                - else
+                  .content__joined
+                    %span.joined 参加中
 
               .basic__content--intro
                 .content__label 紹介文：
@@ -65,17 +69,17 @@
               .shop__content--hp
                 .content--label 公式サイト：
                 .content--url
-                  = link_to(@community.shop.official_site, target: :_blank)
+                  = link_to(@community.shop.official_site, class: "link__hp", target: :_blank)
               .shop__content--sns
                 - if @community.shop.facebook_account.present?
                   .link__sns--facebook
                     = link_to(@community.shop.facebook_account, target: :_blank) do
-                      = icon("fab", "facebook-square", class: "link__icon") 
+                      = icon("fab", "facebook-square", class: "link__icon--facebook") 
                 - if @community.shop.line_account.present?
                   .link__sns--line
                     = link_to(@community.shop.line_account, target: :_blank) do
-                      = icon("fab", "line", class: "link__icon")
+                      = icon("fab", "line", class: "link__icon--line")
                 - if @community.shop.instagram_account.present?
                   .link__sns--instagram
                     = link_to(@community.shop.instagram_account, target: :_blank) do
-                      = icon("fab", "instagram", class: "link__icon")
+                      = icon("fab", "instagram", class: "link__icon--instagram")

@@ -1,6 +1,6 @@
 class CommunitiesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
-  before_action :set_community, only: [:edit, :update, :show, :leave, :destroy]
+  before_action :set_community, only: [:edit, :update, :show, :join, :leave, :destroy]
 
   def index
     @communities = Community.all.limit(20).order(created_at: "DESC")
@@ -31,6 +31,17 @@ class CommunitiesController < ApplicationController
   end
 
   def show
+  end
+
+  def join
+    @community.users << current_user
+    respond_to do |format|
+      if @community.save
+        format.html { render :show, notice: "コミュニティに参加しました" }
+      else
+        format.html { render :show, alert: "エラーが発生しました" }
+      end
+    end
   end
 
   def leave

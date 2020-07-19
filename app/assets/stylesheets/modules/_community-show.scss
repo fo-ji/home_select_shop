@@ -10,10 +10,43 @@
   }
 
   .basic__content, .shop__content {
-    &--name, &--avatar, &--count, &--owner, &--intro, &--hp, &--sns, &--join {
+    &--name, &--avatar, &--count, &--owner, &--intro, &--hp, &--sns, &--join, &--joined {
       display: flex;
-      margin-top: 10px;
+      margin-top: 20px;
       padding-left: 20px;
+
+      .join__blue {
+        color: $fontColorBlue;
+      }
+
+      span.joined {
+        color: $fontColorRed;
+      }
+
+      .content--url {
+        a {
+          color: $fontColorBlue;
+        }
+      }
+
+      .link__icon {
+        &--facebook {
+          margin-right: 10px;
+          font-size: 2em;
+          color: #3B5998;
+        }
+        &--line {
+          margin-right: 10px;
+          font-size: 2em;
+          color: limegreen;
+        }
+        &--instagram {
+          font-size: 2em;
+          color:#fff;
+          background:radial-gradient(at 20% 120%,orange, #f15a4d 25%, #f13f79 55%, #9933ff 100%) no-repeat;
+          border-radius:20%;
+        }
+      }
     }
   }
 }
