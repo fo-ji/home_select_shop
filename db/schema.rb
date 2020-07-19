@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_19_011824) do
+ActiveRecord::Schema.define(version: 2020_07_19_114908) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postal_code", null: false
@@ -129,6 +129,20 @@ ActiveRecord::Schema.define(version: 2020_07_19_011824) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
+  create_table "recommends", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "image", null: false
+    t.integer "genre", default: 0, null: false
+    t.text "introduction", null: false
+    t.text "url"
+    t.bigint "user_id", null: false
+    t.bigint "community_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["community_id"], name: "index_recommends_on_community_id"
+    t.index ["user_id"], name: "index_recommends_on_user_id"
+  end
+
   create_table "shops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", default: "", null: false
@@ -207,6 +221,8 @@ ActiveRecord::Schema.define(version: 2020_07_19_011824) do
   add_foreign_key "items", "categories"
   add_foreign_key "items", "shops"
   add_foreign_key "items", "users"
+  add_foreign_key "recommends", "communities"
+  add_foreign_key "recommends", "users"
   add_foreign_key "stylists", "shops"
   add_foreign_key "stylists", "users"
   add_foreign_key "talks", "communities"
