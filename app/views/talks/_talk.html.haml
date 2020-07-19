@@ -1,0 +1,10 @@
+.talk__message{ data: {talk_id: talk.id}}
+  .talk__message__upper-info
+    .talk__message__upper-info-talker
+      = talk.user.nickname
+    .talk__message__upper-info-date
+      = talk.created_at.strftime("%m/%d %H:%M")
+  .talk__message--text
+    - if talk.talk.present?
+      = talk.talk
+    = image_tag talk.image.url, class: 'talk__message--text-image' if talk.image.present?

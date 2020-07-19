@@ -52,6 +52,8 @@
                 - else
                   .content__joined
                     %span.joined 参加中
+                  .content__talk
+                    = link_to "トークに参加する", community_talks_path(@community), class: "join__blue"
 
               .basic__content--intro
                 .content__label 紹介文：
