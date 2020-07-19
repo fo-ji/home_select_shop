@@ -1,0 +1,60 @@
+.container__community {
+  width: 100%;
+}
+
+.communities__container--recommend {
+  .recommend__title {
+    padding-left: 5px;
+    margin: 20px 0 20px 0;
+
+    span {
+      font-size: 18px;
+      border-bottom: 1px solid $globalFontColorBlack;
+    }
+  }
+
+  .recommend__new {
+    .recommend__link {
+      color: $fontColorBlue;
+    }
+  }
+
+  .recommend__index {
+    margin-top: 10px;
+
+    &--list {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap:wrap;
+
+      .list__recommend {
+        margin-top: 15px;
+        width: 50%;
+        
+        &--image {
+          text-align: center;
+
+          .recommend__image {
+            height: 250px;
+            width: 250px;
+          }
+        }
+
+        &--name, &--genre, &--url, &--user, &--introduction {
+          display: flex;
+
+          .label {
+            color: $fontColorBlue;
+            width: 20%;
+            text-align: right;
+          }
+
+          .content {
+            word-wrap: break-word;
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
+}

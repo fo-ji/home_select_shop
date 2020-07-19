@@ -2,6 +2,7 @@ class RecommendsController < ApplicationController
   before_action :set_community
 
   def index
+    @recommends = @community.recommends.includes(:user)
   end
 
   def new
@@ -11,7 +12,7 @@ class RecommendsController < ApplicationController
   def create
     @recommend = Recommend.new(recommend_params)
     if @recommend.save
-      render :index
+      redirect_to root_path
     else
       render :new
     end
