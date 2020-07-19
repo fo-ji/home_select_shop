@@ -41,6 +41,9 @@ Rails.application.routes.draw do
       get "join"
     end
     resources :talks, only: [:index, :create]
+    namespace :api do
+      resources :talks, only: :index, defaults: { format: "json" }
+    end
   end
 
   resources :items, only: :show do
