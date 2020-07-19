@@ -19,7 +19,35 @@
 
           .communities__container--recommend
             .recommend__title
-              %span レコメンド
+              %span レコメンド一覧
             
             .recommend__new
-              = link_to "レコメンドを作成する", new_community_recommend_path(@community)
+              = link_to "レコメンドを作成する", new_community_recommend_path(@community), class: "recommend__link"
+            
+            .recommend__index
+              %ul.recommend__index--list
+                - @recommends.each do |recommend|
+                  %li.list__recommend
+                    .list__recommend--image
+                      = image_tag(recommend.image.url, class: "recommend__image")
+                    .list__recommend--name
+                      .label 商品名：
+                      .content
+                        = recommend.name
+                    .list__recommend--genre
+                      .label ジャンル：
+                      .content
+                        = recommend.genre
+                    - if recommend.url.present?
+                      .list__recommend--url
+                        .label URL：
+                        .content
+                          = link_to(recommend.url, target: :_blank)
+                    .list__recommend--user
+                      .label 投稿者：
+                      .content
+                        = recommend.user.nickname
+                    .list__recommend--introduction
+                      .label 紹介：
+                      .content
+                        = recommend.introduction
