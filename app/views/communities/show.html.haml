@@ -9,8 +9,6 @@
           %li.click__list
             = link_to "コミュニティ一覧", communities_path
           %li.click__list
-            = link_to "レコメンド一覧"
-          %li.click__list
             = link_to "総合TOPへ戻る", root_path
 
     .main__container--right
@@ -45,7 +43,7 @@
 
               .basic__content--join
                 .content__require
-                  %span コミュニティに参加するとトークに参加できるようになります。
+                  %span コミュニティに参加するとトーク・レコメンドに参加できるようになります。
                 - unless @community.users.include?(current_user)
                   .content__join
                     = link_to "参加する", join_community_path(@community), class: "join__blue"
@@ -54,6 +52,8 @@
                     %span.joined 参加中
                   .content__talk
                     = link_to "トークに参加する", community_talks_path(@community), class: "join__blue"
+                  .content__recommend
+                    = link_to "レコメンドに参加する", community_recommends_path(@community), class: "join__blue"
 
               .basic__content--intro
                 .content__label 紹介文：

@@ -1,0 +1,27 @@
+= form_with(model: [@community, @recommend], url: community_recommends_path(@community), local: true) do |f|
+  = render "devise/shared/error_messages", resource: @recommend
+  .field
+    = f.label :name, "商品名", class: "label__text"
+    %span.required__item 必須
+    = f.text_field :name, autofocus: true, class: "text__field", autocomplete: "name"
+  .field
+    = f.label :genre, "ジャンル", class: "label__text"
+    %span.required__item 必須
+    = f.select :genre, Recommend.genres.keys, {}, {class: "text__field--half"}
+  .field
+    = f.label :image, "画像", class: "label__text"
+    %span.required__item 必須
+    = f.file_field :image
+  .field
+    = f.label :introduction, "商品紹介", class: "label__text"
+    %span.required__item 必須
+    = f.text_area :introduction, class: "text__field--wide"
+  .field
+    = f.label :url, "購入サイト", class: "label__text"
+    %span.required__item 必須
+    = f.text_field :url, class: "text__field"
+  .field__hidden
+    = f.hidden_field :community_id, value: params[:community_id]
+
+  .actions
+    = f.submit "登録する", class: "submit-btn"
