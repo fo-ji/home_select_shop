@@ -3,8 +3,9 @@
 # HomeSelectShop
 
  - サイトURL: https://home-select-shop.herokuapp.com/
- - ログインID: 
- - パスワード:
+ - ログインメールアドレス: test_user@gmail.com
+ - パスワード:1111111q
+
 
 [![Image from Gyazo](https://i.gyazo.com/c4931363e3f5d872b6bdc04709df979a.gif)](https://gyazo.com/c4931363e3f5d872b6bdc04709df979a)
 
@@ -24,8 +25,13 @@
  - スタイリストの体型を公開
   * 自分の体型に合ったスタイリストを見つけられます
  [![Image from Gyazo](https://i.gyazo.com/5be66604bf509314ece06ddabab4ed8b.gif)](https://gyazo.com/5be66604bf509314ece06ddabab4ed8b)
- - コミュニティ機能(**未実装**)
-  * ファッション以外にもおすすめ音楽や雑貨など、コミュニティ内のトークを通じてショップが独自に情報発信出来きます
+ - コミュニティ機能
+  * コミュニティに参加すると「トーク」「レコメンド」の２機能を利用できるようになります。
+ [![Image from Gyazo](https://i.gyazo.com/71954989e9322378ed124d423b96b715.gif)](https://gyazo.com/71954989e9322378ed124d423b96b715)
+  * トーク機能を利用し、コミュニティ参加者全員とトークを通じてコミュニケーションできます。非同期、自動更機能を実装しています。
+[![Image from Gyazo](https://i.gyazo.com/acca2bc678365ba9d5221d80b2558f62.gif)](https://gyazo.com/acca2bc678365ba9d5221d80b2558f62)
+  * レコメンド機能を利用し、ファッション以外にもおすすめ音楽や雑貨など、コミュニティ内のトークを通じてショップが独自に情報発信出来きます。購入に移行しやすいように、URLも登録可能にしています。
+[![Image from Gyazo](https://i.gyazo.com/a89b02dd242de1655482c71cc57c3605.png)](https://gyazo.com/a89b02dd242de1655482c71cc57c3605)
   * いいね機能で発信した情報の反応を見れます。(**未実装**)
  - コーディネート商品の出品/購入機能(**未実装**)
   * 5つのアイテムをまとめて出品、まとめて購入できます
@@ -36,7 +42,7 @@
  - ユーザー管理機能 (**SNS認証は未実装**)
  - 誰でもショップ登録が可能
   * ショップ登録者とスタイリストは商品出品/編集を行うことができる。
- - 商品の購入機能(**現在実装中**)
+ - 商品の購入機能
   * 「カートにいれる」→「カート詳細ページ」→「クレジットカードによる購入」のフローです。
  [![Image from Gyazo](https://i.gyazo.com/167ba58a09d8dc56f36ab32a8521fbc1.gif)](https://gyazo.com/167ba58a09d8dc56f36ab32a8521fbc1)
   * 「今すぐ購入」→「クレジットカードによる購入」も可能です。
@@ -74,6 +80,7 @@
 * PostgreSQL (production)
 * Heroku
 * CircleCI
+* S3
 
  - gem 'jquery-rails'
  - gem 'jbuilder', '~> 2.5'
@@ -87,16 +94,18 @@
  - gem 'haml-rails'
  - gem 'devise'
  - gem 'ancestry'
- - gem 'omniauth-facebook'
- - gem 'omniauth-google-oauth2'
- - gem "omniauth-rails_csrf_protection"
- - gem 'gretel'
+ - gem 'dotenv-rails'
+ - gem 'fog'
  - gem 'payjp'
- - gem 'ransack' 
- - gem 'kaminari'
+ - gem 'omniauth-facebook' (未実装)
+ - gem 'omniauth-google-oauth2' (未実装)
+ - gem "omniauth-rails_csrf_protection" (未実装)
+ - gem 'gretel' (未実装)
+ - gem 'ransack' (未実装)
+ - gem 'kaminari' (未実装)
 
 ## ER図
-![HomeSelectShop_個人アプリ](https://user-images.githubusercontent.com/57491651/87151558-0aa85e00-c2ef-11ea-9bf3-7803c61043f1.png)
+![HomeSelectShop_個人アプリ](https://user-images.githubusercontent.com/57491651/87876858-ca935a80-ca15-11ea-92f5-4e165d660b00.png)
 
 # テーブル
 ## Usersテーブル
@@ -126,6 +135,7 @@
 - has_many :talks
 - has_many :stylists
 - has_many :shops, through: :stylists
+- has_many :recommends
 - has_many :messages
 - has_many :likes
 - has_many :item_payments
@@ -141,7 +151,7 @@
 ### Association
 - belongs_to :user
 
-## Sns_credentialテーブル
+## Sns_credentialテーブル(未実装)
 
 |Column|Type|Options|
 |------|----|-------|
@@ -171,14 +181,18 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name        |string|null: false, index: true|
-|avatar      |text  ||
-|introduction|text  ||
+|name        |string    |null: false, index: true|
+|owner       |string    |null: false|
+|avatar      |text      ||
+|introduction|text      ||
+|shop        |references|null: false, foreign_key: true|
 
 ### Association
-- has_many :communities_users
-- has_many :users, through: :communities_users
-- has_many :talks
+- has_many   :communities_users
+- has_many   :users, through: :communities_users
+- has_many   :talks
+- has_many   :recommends
+- belongs_to :shop
 
 ## Communities_usersテーブル
 
@@ -195,10 +209,26 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|talk     |text      |null: false, index: true|
+|talk     |string    ||
 |image    |string    ||
 |user     |references|null: false, foreign_key: true|
 |community|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :community
+
+## Recommendsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name        |string    |null: false|
+|image       |string    |null: false|
+|genre       |integer   |null: false|
+|url         |text      |
+|introduction|text      |null: false|
+|user        |references|null: false, foreign_key: true|
+|community   |references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -219,23 +249,28 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name        |string |null: false|
-|postal_code |string |null: false|
-|prefecture  |integer|null: false|
-|city        |string |null: false|
-|address     |string |null: false|
-|apartment   |string ||
-|phone_number|integer|null: false|
-|avatar      |text   ||
-|introduction|text   ||
-|email       |string |null: false, unique: true|
+|name             |string |null: false|
+|postal_code      |string |null: false|
+|prefecture       |integer|null: false|
+|city             |string |null: false|
+|address          |string |null: false|
+|apartment        |string ||
+|phone_number     |integer|null: false|
+|avatar           |text   ||
+|introduction     |text   ||
+|email            |string |null: false, unique: true|
+|official_site    |text||
+|facebook_account |text||
+|line_account     |text||
+|instagram_account|text||
 
 ### Association
 - has_many :stylists
 - has_many :users, through: :stylists
 - has_many :items
+- has_one  :community
 
-## Messagesテーブル
+## Messagesテーブル(未実装)
 
 |Column|Type|Options|
 |------|----|-------|
@@ -247,7 +282,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## Likesテーブル
+## Likesテーブル(未実装)
 
 |Column|Type|Options|
 |------|----|-------|
