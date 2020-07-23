@@ -9,7 +9,7 @@ class Shop < ApplicationRecord
   validates :postal_code, :prefecture, :city, :address, :phone_number, presence: true
   validates :postal_code, format: { with: /\A\d{3}[-]\d{4}$|^\d{3}[-]\d{2}$|^\d{3}\z/ }
   validates :phone_number, format: { with: /\A\d{10}$|^\d{11}\z/ }
-  validates :official_site, :facebook_account, :line_account, :instagram_account, format: { with: /\A#{URI::regexp(%w(http https))}\z/ }
+  validates :official_site, :facebook_account, :line_account, :instagram_account, format: { with: /\A#{URI::regexp(%w(http https))}\z/ }, allow_nil: true
 
   mount_uploader :avatar, ImageUploader
 
