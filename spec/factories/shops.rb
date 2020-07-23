@@ -2,6 +2,8 @@ FactoryBot.define do
   factory :shop do
     name              {"ヤマ"}
     email             {"bbb@gmail.com"}
+    avatar            {File.open("#{Rails.root}/public/images/unnamed.jpg")}
+    introduction      {"タロウ"}
     postal_code       {"222-2222"}
     prefecture        {"大阪府"}
     city              {"大阪市"}
