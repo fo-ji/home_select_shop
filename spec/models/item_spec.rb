@@ -11,6 +11,10 @@ RSpec.describe Item, type: :model do
       item.valid?
       expect(item.errors[:name]).to include("を入力してください")
     end
+    it "nameが重複していたらNG" do
+      item1 = create(:item)
+      expect(build(:item, name: item1.name)).to_not be_valid
+    end
     it "priceが空ならNG" do
       item = build(:item, price: nil)
       item.valid?
@@ -55,6 +59,16 @@ RSpec.describe Item, type: :model do
       item = build(:item, gender: nil)
       item.valid?
       expect(item.errors[:gender]).to include("を入力してください")
+    end
+    it "stockが空ならNG" do
+      item = build(:item, stock: nil)
+      item.valid?
+      expect(item.errors[:stock]).to include("を入力してください")
+    end
+    it "stockが4ケタならNG" do
+      item = build(:item, stock: "1609")
+      item.valid?
+      expect(item.errors[:stock]).to include("は3文字以内で入力してください")
     end
     it "user_idが空ならNG" do
       item = build(:item, user: nil)
