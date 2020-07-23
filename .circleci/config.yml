@@ -43,11 +43,11 @@ jobs:
            bundle exec rake db:schema:load
 
     # AWS setup
-    - run:
-        name: AWSsetup
-        command: |
-           echo AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} > ~/.env
-           echo AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} >> ~/.env
+    # - run:
+    #     name: AWSsetup
+    #     command: |
+    #        echo AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} > ~/.env
+    #        echo AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} >> ~/.env
 
     # # run tests!
     - run:
