@@ -21,6 +21,8 @@ services:
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
     volumes:
       - .:/home_select_shop
+    env_file:
+      - ~/.env
     ports:
       - "3000:3000"
     links:
