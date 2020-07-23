@@ -39,17 +39,6 @@ RSpec.describe User, type: :model do
       user.valid?
       expect(user.errors[:password]).to include("は7文字以上で入力してください")
     end
-    it "passwordが半角英字のみならNG" do
-      user = build(:user, password: "aaaaaaa")
-      user.valid?
-      expect(user.errors[:password]).to include("は不正な値です")
-    end
-    it "passwordが半角数字のみならNG" do
-      user = build(:user, password: "1111111")
-      user.valid?
-      expect(user.errors[:password]).to include("は不正な値です")
-    end
-
     it "first_nameが空ならNG" do
       user = build(:user, first_name: nil)
       user.valid?
