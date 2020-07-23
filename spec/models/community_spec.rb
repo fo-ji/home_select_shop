@@ -39,5 +39,9 @@ RSpec.describe Community, type: :model do
       community.valid?
       expect(community.errors[:shop]).to include("を入力してください")
     end
+    it "全て入力されていればcommunity_userの登録もOK" do
+      community = create(:community, :community_user)
+      expect(community).to be_valid
+    end
   end
 end
