@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item do
-    name          {"Tシャツ"}
+    name          {Faker::Name.name}
     price         {"1300"}
     explain       {"赤色です"}
     size          {"FREESIZE"}
