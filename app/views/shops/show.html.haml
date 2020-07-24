@@ -49,7 +49,21 @@
                   = link_to(@shop.instagram_account, target: :_blank) do
                     = icon("fab", "instagram", class: "link__icon")
         .shop__item--title 商品一覧
-        = render "layouts/item-box"
+        .items__container
+          %ul.items__container--list
+            - @items.each do |item|
+              %li.item__list
+                .item__thumbnail
+                  = link_to item_path(item.id) do
+                    .item__thumbnail--image
+                    - if item.images.present?
+                      = image_tag item.images[0].item_image.url, class: "item__show", size: "120x160"
+                    - else
+                      = image_tag "no_image.png", class: "item__show"
+                  .item__label
+                    = item.name
+                  .item__price
+                    = "¥ #{item.price.to_s(:delimited)}"
 
       -# 商品出品できてから実装
       -# = paginate @shop_items

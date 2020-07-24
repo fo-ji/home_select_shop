@@ -15,8 +15,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :shops, only: [:new, :create, :show, :edit, :update, :destroy] do
-    resources :items, only: [:new, :create, :edit, :update, :destroy] do
+  resources :shops, except:[:index] do
+    resources :items, except:[:index, :show] do
       collection do
         get "search_child", defaults: { format: "json" }
       end
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
       get "admin_index"
       get "leave"
     end
-    resources :communities, only: [:new, :create, :edit, :update, :destroy] do
+    resources :communities, except:[:index, :show] do
       member do
         get "leave"
       end
@@ -42,12 +42,12 @@ Rails.application.routes.draw do
     end
     resources :talks, only: [:index, :create]
     namespace :api do
-      resources :talks, only: :index, defaults: { format: "json" }
+      resources :talks, only: [:index], defaults: { format: "json" }
     end
     resources :recommends, only: [:index, :new, :create]
   end
 
-  resources :items, only: :show do
+  resources :items, only: [:show] do
     resources :item_payments, only: :create
   end
   
