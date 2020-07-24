@@ -4,7 +4,7 @@ class ShopsController < ApplicationController
   before_action      :set_admin_stylist, only: [:admin_index, :edit, :update, :leave, :destroy, :admin]
 
   def admin_index
-    @items = @shop.items.all.order(created_at: "DESC")
+    @items = @shop.items.includes(:images).all.order(created_at: "DESC")
   end
 
   def new
