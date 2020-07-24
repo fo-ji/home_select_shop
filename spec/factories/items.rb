@@ -12,5 +12,9 @@ FactoryBot.define do
     shop
     brand
     category
+
+    trait :invalid do
+      name        {""}
+    end
   end
 end
