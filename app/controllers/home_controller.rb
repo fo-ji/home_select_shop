@@ -3,6 +3,6 @@ class HomeController < ApplicationController
 
   def top
     @parents = Category.where(ancestry: nil)
-    @all_items = Item.all.limit(10).order(created_at: "DESC")
+    @all_items = Item.all.includes(:images).limit(10).order(created_at: "DESC")
   end
 end
