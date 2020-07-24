@@ -2,14 +2,7 @@
 
   .main__container
     .main__container--left
-
-      %section.container__search
-        %h2.container__search--title メニュー
-        %ul.container__search--list
-          %li.click__list
-            = link_to "コミュニティ一覧", communities_path
-          %li.click__list
-            = link_to "総合TOPへ戻る", root_path
+      = render "communities/side-bar"
 
     .main__container--right
       %section.container__community
