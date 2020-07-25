@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :set_shop, only: [:edit, :update, :destroy]
+  before_action :set_shop_gretel, only: [:new, :edit]
 
   def new
     @item = Item.new
@@ -72,5 +73,9 @@ class ItemsController < ApplicationController
 
   def set_shop
     @shop = @item.shop
+  end
+
+  def set_shop_gretel
+    @shop = Shop.find(params[:shop_id])
   end
 end

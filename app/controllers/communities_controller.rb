@@ -1,6 +1,7 @@
 class CommunitiesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   before_action :set_community, only: [:edit, :update, :show, :join, :leave, :destroy]
+  before_action :set_shop, only: [:new, :edit, :leave]
 
   def index
     @communities = Community.all.limit(20).order(created_at: "DESC")
@@ -66,5 +67,9 @@ class CommunitiesController < ApplicationController
 
   def set_community
     @community = Community.find(params[:id])
+  end
+
+  def set_shop
+    @shop = Shop.find(params[:shop_id])
   end
 end

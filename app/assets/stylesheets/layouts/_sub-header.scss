@@ -1,4 +1,15 @@
 .sub-header {
   height: 50px;
   width: 100vw;
+  line-height: 50px;
+  padding-left: 30px;
+  font-size: 0.8em;
+  
+  a {
+    color: $fontColorBlue;
+  }
+
+  .current {
+    color: $fontColorGray;
+  }
 }
