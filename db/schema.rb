@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_19_114908) do
+ActiveRecord::Schema.define(version: 2020_07_25_141236) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postal_code", null: false
@@ -74,6 +74,27 @@ ActiveRecord::Schema.define(version: 2020_07_19_114908) do
     t.datetime "updated_at", null: false
     t.index ["community_id"], name: "index_community_users_on_community_id"
     t.index ["user_id"], name: "index_community_users_on_user_id"
+  end
+
+  create_table "coordinate_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "coordinate_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coordinate_id"], name: "index_coordinate_items_on_coordinate_id"
+    t.index ["item_id"], name: "index_coordinate_items_on_item_id"
+  end
+
+  create_table "coordinates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "total_price", null: false
+    t.integer "set", default: 1, null: false
+    t.text "explain", null: false
+    t.integer "postage", default: 1, null: false
+    t.integer "shipping_date", default: 1, null: false
+    t.integer "gender", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -213,6 +234,8 @@ ActiveRecord::Schema.define(version: 2020_07_19_114908) do
   add_foreign_key "communities", "shops"
   add_foreign_key "community_users", "communities"
   add_foreign_key "community_users", "users"
+  add_foreign_key "coordinate_items", "coordinates"
+  add_foreign_key "coordinate_items", "items"
   add_foreign_key "credit_cards", "users"
   add_foreign_key "images", "items"
   add_foreign_key "item_payments", "items"
