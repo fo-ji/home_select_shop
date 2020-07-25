@@ -3,9 +3,11 @@ class Item < ApplicationRecord
   belongs_to :shop
   belongs_to :brand
   belongs_to :category
-  has_many   :images,        dependent: :destroy
-  has_many   :item_payments, dependent: :destroy
-  has_many   :cart_items,    dependent: :destroy
+  has_many   :images,           dependent: :destroy
+  has_many   :item_payments,    dependent: :destroy
+  has_many   :cart_items,       dependent: :destroy
+  has_many   :coordinate_items, dependent: :destroy
+  has_many   :coordinates, through: :coordinate_items
 
   accepts_nested_attributes_for :images
   accepts_nested_attributes_for :brand
