@@ -1,10 +1,10 @@
 .wrapper__form
+  - breadcrumb :new_item, @shop
   = render "layouts/sub-header"
 
   .form__container
     %h1.form__container--title 商品の出品
     .form__container--contents
-      -# = render "form", {shop: @item}
       = form_with(model: [@shop, @item], url: shop_items_path, local: true) do |f|
         = render "devise/shared/error_messages", resource: @item
         .image__container
