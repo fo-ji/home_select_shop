@@ -33,6 +33,6 @@ class CoordinatesController < ApplicationController
   # end
 
   def coordinate_params
-    params.require(:coordinate).permit(:name, :explain, :total_price, :postage, :shipping_date, :gender, :set, item_ids: [])
+    params.require(:coordinate).permit(:name, :explain, :total_price, :postage, :shipping_date, :gender, :set, :image, item_ids: [])
   end
 end
