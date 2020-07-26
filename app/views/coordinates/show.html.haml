@@ -1,2 +1,100 @@
-%h1 Coordinates#show
-%p Find me in app/views/coordinates/show.html.haml
+.wrapper__item
+  = render "layouts/sub-header"
+
+  .item__container
+    .item__container--all
+      .container__left
+        .container__left--image
+          = image_tag @coordinate.image.url, alt: "main-iamge", class: "main__image"
+        .container__left--thumbnail
+          %ul.thumbnail__list
+          - @items.each do |item|
+            = link_to item_path(item.id) do
+              %li.thumbnail__list--item
+                = image_tag item.images[0].item_image.url, alt: "preview", class: "sub__image"
+        .container__left--require
+          ※画像をクリックすると商品ページより個別で購入することも可能です。
+
+      .container__right
+        .container__right--info
+
+          .info__intro
+            .info__intro--shop
+              = "ショップ：" + @coordinate.shop.name
+            %h1.info__intro--name
+              = @coordinate.name
+            .info__intro--price
+              = "¥ #{@coordinate.total_price.to_s(:delimited)}"
+              %small.info__intro--price-tax 税込
+            .info__intro--favorite
+              .favorite__icon
+                = icon("far", "heart")
+              .favorite__text お気に入りアイテム登録数：
+              .favorite__count
+                = "○○人(仮置き！)"
+
+          .info__trade
+          - if @coordinate.set > 0
+            .info__trade--nav
+              -# .nav__btn--buy
+              -#   = form_with(model: @item_payment, url: item_item_payments_path(@item.id), class: "buy__form") do |f|
+              -#     = f.label :purchase_amount, "購入数", class: "label__text"
+              -#     = f.number_field :purchase_amount, min: 1, max: 5, class: "number-field"
+              -#     %span.space-word 個
+              -#     - if user_signed_in?
+              -#       = f.hidden_field :user_id, value: current_user.id
+                  -# %script.payjp-button{"data-key": "pk_test_7909da3d557868a5ca4eddd3", src: "https://checkout.pay.jp", type: "text/javascript", "data-text": "今すぐ購入する", class: "input-btn"}
+              .nav__btn--cart
+                .stock__amount
+                  = "在庫数：#{@coordinate.set}"
+                  %span.space-word 個
+                -# .nav__btn--cart-text
+                -#   = link_to "カートに入れる", add_item_path(item_id: @item.id), method: :post
+          - else
+            .attention__message 在庫切れ
+
+          .info__explain
+            .info__explain--title コーディネイト説明
+            .info__explain--text
+              = @coordinate.explain
+            .info__explain--detail
+              %dl.detail__box
+                .detail__box--list
+                  %dt.detail__box--list-key 性別タイプ
+                  %span :
+                  %dd.detail__box--list-value
+                    = @coordinate.gender
+                .detail__box--list
+                  %dt.detail__box--list-key 送料
+                  %span :
+                  %dd.detail__box--list-value
+                    = @coordinate.postage
+                .detail__box--list
+                  %dt.detail__box--list-key 配送日(目安)
+                  %span :
+                  %dd.detail__box--list-value
+                    = @coordinate.shipping_date
+
+          .info__stylist
+            .info__stylist--title スタイリスト詳細
+            .info__stylist--text
+              = "スタイリスト名：" + @coordinate.user.nickname + "さん"
+            .info__stylist--detail
+              %dl.detail__box
+                .detail__box--list
+                  %dt.detail__box--list-key 身長
+                  %span :
+                  %dd.detail__box--list-value
+                    = @coordinate.user.height
+                    %span cm
+                .detail__box--list
+                  %dt.detail__box--list-key 体重
+                  %span :
+                  %dd.detail__box--list-value
+                    = @coordinate.user.body_weight
+                    %span kg
+                .detail__box--list
+                  %dt.detail__box--list-key 足のサイズ
+                  %span :
+                  %dd.detail__box--list-value
+                    = @coordinate.user.foot_size

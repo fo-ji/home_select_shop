@@ -45,6 +45,11 @@
             }
           }
         }
+
+        &--require {
+          font-size: 15px;
+          color: $fontColorDarkgray;
+        }
       }
 
       .container__right {

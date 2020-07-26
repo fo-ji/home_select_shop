@@ -51,6 +51,8 @@ Rails.application.routes.draw do
   resources :items, only: [:show] do
     resources :item_payments, only: :create
   end
+
+  resources :coordinates, only: [:show]
   
   resources :carts, only: [:show]
 
