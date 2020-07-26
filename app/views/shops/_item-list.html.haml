@@ -1,4 +1,6 @@
 .items__container
+  .items__container--title
+    %span アイテム一覧
   %ul.items__container--list
     - @items.each do |item|
       %li.item__list
@@ -18,3 +20,23 @@
               = link_to "編集", edit_shop_item_path(@shop, item), class: "edit__btn"
             .item__btn--delete
               = link_to "削除", shop_item_path(@shop, item), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "delete__btn"
+
+.items__container
+  .items__container--title
+    %span コーディネイト一覧
+  %ul.items__container--list
+    - @coordinates.each do |coordinate|
+      %li.item__list
+        .item__thumbnail
+          = link_to coordinate_path(coordinate.id) do
+            .item__thumbnail--image
+              = image_tag coordinate.image.url, class: "item__show", size: "120x160"
+          .item__label
+            = coordinate.name
+          .item__price
+            = "¥ #{coordinate.total_price.to_s(:delimited)}"
+          .item__btn
+            .item__btn--edit
+              = link_to "編集", edit_shop_coordinate_path(@shop, coordinate), class: "edit__btn"
+            .item__btn--delete
+              = link_to "削除", shop_coordinate_path(@shop, coordinate), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "delete__btn"
