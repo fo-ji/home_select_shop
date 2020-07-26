@@ -71,6 +71,15 @@
   width: 100%;
   padding: 0 0 25px;
 
+  &--title {
+    margin-top: 20px;
+    text-align: center;
+
+    span {
+      border-bottom: 1px solid $globalFontColorBlack;
+    }
+  }
+
   &--list {
     display: flex;
     flex-wrap:wrap;

@@ -49,8 +49,11 @@
                 .link__sns--instagram
                   = link_to(@shop.instagram_account, target: :_blank) do
                     = icon("fab", "instagram", class: "link__icon")
+
         .shop__item--title 商品一覧
         .items__container
+          .items__container--title
+            %span アイテム一覧
           %ul.items__container--list
             - @items.each do |item|
               %li.item__list
@@ -66,5 +69,17 @@
                   .item__price
                     = "¥ #{item.price.to_s(:delimited)}"
 
-      -# 商品出品できてから実装
-      -# = paginate @shop_items
+        .items__container
+          .items__container--title
+            %span コーディネイト一覧
+          %ul.items__container--list
+            - @coordinates.each do |coordinate|
+              %li.item__list
+                .item__thumbnail
+                  = link_to coordinate_path(coordinate.id) do
+                    .item__thumbnail--image
+                      = image_tag coordinate.image.url, class: "item__show", size: "120x160"
+                  .item__label
+                    = coordinate.name
+                  .item__price
+                    = "¥ #{coordinate.total_price.to_s(:delimited)}"

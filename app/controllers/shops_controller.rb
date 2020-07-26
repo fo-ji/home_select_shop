@@ -5,6 +5,7 @@ class ShopsController < ApplicationController
 
   def admin_index
     @items = @shop.items.includes(:images).all.order(created_at: "DESC")
+    @coordinates = @shop.coordinates.all.order(created_at: "DESC")
   end
 
   def new
@@ -23,8 +24,7 @@ class ShopsController < ApplicationController
 
   def show
     @items = @shop.items.includes(:images).all.order(created_at: "DESC")
-    # ページネーションの設定（商品出品ができてから実装）
-    # @shop_items = Shop.items.page(params[:page]).per(20)
+    @coordinates = @shop.coordinates.all.order(created_at: "DESC")
   end
 
   def edit
