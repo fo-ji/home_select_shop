@@ -4,6 +4,8 @@
   .container__left--menu
     = link_to "アイテム出品", new_shop_item_path(@shop.id), class: "menu__title"
   .container__left--menu
+    = link_to "コーディネイト出品", new_shop_coordinate_path(@shop.id), class: "menu__title"
+  .container__left--menu
     = link_to "出品商品一覧", admin_index_shop_path(@shop.id), class: "menu__title"
   - if @shop.community.blank?
     .container__left--menu

@@ -15,8 +15,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :shops, except:[:index] do
-    resources :items, except:[:index, :show] do
+  resources :shops, except: [:index] do
+    resources :items, except: [:index, :show] do
       collection do
         get "search_child", defaults: { format: "json" }
       end
@@ -29,11 +29,12 @@ Rails.application.routes.draw do
       get "admin_index"
       get "leave"
     end
-    resources :communities, except:[:index, :show] do
+    resources :communities, except: [:index, :show] do
       member do
         get "leave"
       end
     end
+    resources :coordinates, except: [:index, :show]
   end
 
   resources :communities, only: [:index, :show] do
