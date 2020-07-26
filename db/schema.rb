@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 2020_07_25_141236) do
     t.integer "postage", default: 1, null: false
     t.integer "shipping_date", default: 1, null: false
     t.integer "gender", default: 1, null: false
+    t.text "image", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -8,9 +8,8 @@ class CreateCoordinates < ActiveRecord::Migration[5.2]
       t.integer    :postage,       null: false, default: 1
       t.integer    :shipping_date, null: false, default: 1
       t.integer    :gender,        null: false, default: 1
+      t.text       :image,         null: false
       t.timestamps
     end
   end
-
-  # add_index :coordinates, :name, unique: true
 end
