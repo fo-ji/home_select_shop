@@ -45,6 +45,11 @@ crumb :admin_index_item do |shop|
   parent :admin_shop, shop
 end
 
+crumb :edit_coordinate do |shop|
+  link "コーディネイト商品の編集"
+  parent :admin_index_item, shop
+end
+
 crumb :edit_item do |shop|
   link "商品編集"
   parent :admin_index_item, shop
