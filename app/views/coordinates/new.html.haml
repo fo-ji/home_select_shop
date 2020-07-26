@@ -1,2 +1,56 @@
-%h1 Coordinates#new
-%p Find me in app/views/coordinates/new.html.haml
+.wrapper__form
+  - breadcrumb :new_coordinate, @shop
+  = render "layouts/sub-header"
+
+  .form__container
+    %h1.form__container--title コーディネイト商品の出品
+    .form__container--contents
+      = form_with(model: [@shop, @coordinate], url: shop_coordinates_path, local: true) do |f|
+        = render "devise/shared/error_messages", resource: @coordinate
+        .field
+          = f.label :name, "商品名", class: "label__text"
+          %span.required__item 必須
+          = f.text_field :name, autofocus: true, class: "text__field", autocomplete: "name"
+
+
+
+        .field
+          = f.label :image, "コーディネイト画像", class: "label__text"
+          %span.required__item 任意
+          = f.file_field :image
+
+
+        .field
+          = f.label :total_price, "価格", class: "label__text"
+          %span.required__item 必須
+          = f.text_field :total_price, class: "text__field"
+
+
+
+        .field
+          = f.label :explain, "商品紹介", class: "label__text"
+          %span.required__item 任意
+          = f.text_area :explain, class: "text__field--wide"
+        .field
+          = f.label :postage, "送料", class: "label__text"
+          %span.required__item 必須
+          = f.select :postage, Item.postages.keys, {}, {class: "text__field--half"}
+        .field
+          = f.label :shipping_date, "発送日の目安", class: "label__text"
+          %span.required__item 必須
+          = f.select :shipping_date, Item.shipping_dates.keys, {}, {class: "text__field--half"}
+        .field
+          = f.label :gender, "性別タイプ", class: "label__text"
+          %span.required__item 必須
+          = f.select :gender, Item.genders.keys, {}, {class: "text__field--half"}
+        .field
+          = f.label :set, "在庫数", class: "label__text"
+          %span.required__item 必須
+          = f.number_field :set, min: 1, max: 300, class: "text__field--half"
+        .field__hidden
+          = f.hidden_field :shop_id, value: params[:shop_id]
+
+        .actions
+          = f.submit "出品する", class: "submit-btn"
+
+  .blank__space

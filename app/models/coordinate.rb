@@ -1,6 +1,7 @@
 class Coordinate < ApplicationRecord
   has_many   :coordinate_items
   has_many   :items, through: :coordinate_items
+  belongs_to :shop
 
   validates :name, presence: true, uniqueness: true
   validates :explain, :image, :postage, :shipping_date, :gender, presence: true
