@@ -93,7 +93,18 @@
           = link_to "もっと見る", "#", class: "link__blue"
       %section.container__item
         %h2.container__item--title 最新のコーディネート
-        = render "layouts/item-box"
+        .items__container
+          %ul.items__container--list
+            - @all_coordinates.each do |coordinate|
+              %li.item__list
+                .item__thumbnail
+                  = link_to coordinate_path(coordinate.id) do
+                    .item__thumbnail--image
+                      = image_tag coordinate.image.url, class: "item__show", size: "120x160"
+                  .item__label
+                    = coordinate.name
+                  .item__price
+                    = "¥ #{coordinate.total_price.to_s(:delimited)}"
         %p.container__item--more
           = link_to "もっと見る", "#", class: "link__blue"
       %section.container__item

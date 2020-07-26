@@ -1,4 +1,6 @@
 class CoordinatesController < ApplicationController
+  skip_before_action :authenticate_user!, only: :show
+  before_action :set_coordinate, only: [:show]
   before_action :set_shop_gretel, only: [:new]
 
   def new
@@ -16,6 +18,7 @@ class CoordinatesController < ApplicationController
   end
 
   def show
+    @items = @coordinate.items.includes(:images)
   end
 
   def edit
@@ -29,12 +32,12 @@ class CoordinatesController < ApplicationController
 
   private
 
-  # def set_shop
-  #   @shop = Shop.find(parmas[:id])
-  # end
+  def set_coordinate
+    @coordinate = Coordinate.find(params[:id])
+  end
 
   def coordinate_params
-    params.require(:coordinate).permit(:name, :explain, :total_price, :postage, :shipping_date, :gender, :set, :image, :shop_id, item_ids: [])
+    params.require(:coordinate).permit(:name, :explain, :total_price, :postage, :shipping_date, :gender, :set, :image, :shop_id, item_ids: []).merge(user_id: current_user.id)
   end
 
   def set_shop_gretel
