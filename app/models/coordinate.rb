@@ -1,8 +1,8 @@
 class Coordinate < ApplicationRecord
-  has_many   :coordinate_items
-  has_many   :items, through: :coordinate_items
   belongs_to :user
   belongs_to :shop
+  has_many   :coordinate_items, dependent: :destroy
+  has_many   :items, through: :coordinate_items
 
   validates :name, presence: true, uniqueness: true
   validates :explain, :image, :postage, :shipping_date, :gender, presence: true

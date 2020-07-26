@@ -1,7 +1,7 @@
 class CoordinatesController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
-  before_action :set_coordinate, only: [:show, :edit, :update]
-  before_action :set_shop, only: [:edit, :update]
+  before_action :set_coordinate, only: [:show, :edit, :update, :destroy]
+  before_action :set_shop, only: [:edit, :update, :destroy]
   before_action :set_shop_gretel, only: [:new, :edit]
   before_action :set_shop_items, only: [:new, :edit]
 
@@ -34,6 +34,11 @@ class CoordinatesController < ApplicationController
   end
 
   def destroy
+    if @coordinate.destroy
+      redirect_to admin_index_shop_path(@shop)
+    else
+      render :admin
+    end
   end
 
   private
