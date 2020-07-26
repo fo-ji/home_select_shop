@@ -3,6 +3,7 @@ class Shop < ApplicationRecord
   has_many :users, through: :stylists
   has_many :items
   has_one  :community, dependent: :destroy
+  has_many :coordinates
 
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }

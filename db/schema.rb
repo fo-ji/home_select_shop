@@ -94,8 +94,10 @@ ActiveRecord::Schema.define(version: 2020_07_25_141236) do
     t.integer "shipping_date", default: 1, null: false
     t.integer "gender", default: 1, null: false
     t.text "image", null: false
+    t.bigint "shop_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_coordinates_on_shop_id"
   end
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -237,6 +239,7 @@ ActiveRecord::Schema.define(version: 2020_07_25_141236) do
   add_foreign_key "community_users", "users"
   add_foreign_key "coordinate_items", "coordinates"
   add_foreign_key "coordinate_items", "items"
+  add_foreign_key "coordinates", "shops"
   add_foreign_key "credit_cards", "users"
   add_foreign_key "images", "items"
   add_foreign_key "item_payments", "items"

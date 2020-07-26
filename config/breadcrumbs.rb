@@ -75,6 +75,11 @@ crumb :new_item do |shop|
   parent :admin_shop, shop
 end
 
+crumb :new_coordinate do |shop|
+  link "コーディネイト商品出品"
+  parent :admin_shop, shop
+end
+
 crumb :cart do
   link "カート"
 end
