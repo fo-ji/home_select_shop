@@ -54,6 +54,72 @@
           border-radius: 2px;
           padding: 10px 7px;
         }
+
+        .required__item {
+          font-weight: bold;
+        }
+
+      }
+
+      .field__items {
+        border-bottom: 1px solid $borderColorGray;
+        width: 100%;
+        display: flex;
+
+        .label__text {
+          display: inline-block;
+          line-height: 80px;
+          width: 180px;
+          padding: 0;
+          font-size: 15px;
+        }
+
+        .required__item {
+          width: 55px;
+          text-align: right;
+          margin: 28px 0px 0 5px;
+          font-weight: bold;
+        }
+
+        .check__box--field {
+          display: flex;
+          flex-wrap: wrap;
+
+          .check-box {
+            width: 100%;
+            display: flex;
+            margin: 25px 10px 20px 10px;
+
+            &:hover {
+              opacity: 0.4;
+            }
+
+            &__left {
+              padding: 30px 30px 0 20px;
+            }
+
+            &__right {
+              span.required__label {
+                text-align: right;
+                display: inline-block;
+                width: 80px;
+              }
+
+              .item__image {
+                margin-top: 10px;
+              }
+
+              .check-name, .check-price {
+                span.required__label {
+                  text-align: right;
+                  display: inline-block;
+                  width: 80px;
+                }
+              }
+            }
+
+          }
+        }
       }
 
       .stylist-form {

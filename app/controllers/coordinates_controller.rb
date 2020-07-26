@@ -1,12 +1,13 @@
 class CoordinatesController < ApplicationController
-  # before_action :set_shop, only: [:new]
+  before_action :set_shop_gretel, only: [:new]
 
   def new
     @coordinate = Coordinate.new
+    @shop_items = @shop.items.includes(:images)
   end
 
   def create
-    @coordinate = Coordinate.new(coodinate_params)
+    @coordinate = Coordinate.new(coordinate_params)
     if @coordinate.save
       redirect_to root_path
     else
@@ -33,6 +34,10 @@ class CoordinatesController < ApplicationController
   # end
 
   def coordinate_params
-    params.require(:coordinate).permit(:name, :explain, :total_price, :postage, :shipping_date, :gender, :set, :image, item_ids: [])
+    params.require(:coordinate).permit(:name, :explain, :total_price, :postage, :shipping_date, :gender, :set, :image, :shop_id, item_ids: [])
+  end
+
+  def set_shop_gretel
+    @shop = Shop.find(params[:shop_id])
   end
 end
