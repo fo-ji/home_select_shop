@@ -46,8 +46,8 @@
                 .stock__amount
                   = "在庫数：#{@coordinate.set}"
                   %span.space-word 個
-                -# .nav__btn--cart-text
-                -#   = link_to "カートに入れる", add_item_path(item_id: @item.id), method: :post
+                .nav__btn--cart-text
+                  = link_to "カートに入れる", add_coordinate_path(coordinate_id: @coordinate.id), method: :post
           - else
             .attention__message 在庫切れ
 
