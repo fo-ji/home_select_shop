@@ -17,7 +17,6 @@
 
       .container__right
         .container__right--info
-
           .info__intro
             .info__intro--shop
               = "ショップ：" + @coordinate.shop.name
@@ -32,18 +31,17 @@
               .favorite__text お気に入りアイテム登録数：
               .favorite__count
                 = "○○人(仮置き！)"
-
           .info__trade
           - if @coordinate.set > 0
             .info__trade--nav
-              -# .nav__btn--buy
-              -#   = form_with(model: @item_payment, url: item_item_payments_path(@item.id), class: "buy__form") do |f|
-              -#     = f.label :purchase_amount, "購入数", class: "label__text"
-              -#     = f.number_field :purchase_amount, min: 1, max: 5, class: "number-field"
-              -#     %span.space-word 個
-              -#     - if user_signed_in?
-              -#       = f.hidden_field :user_id, value: current_user.id
-                  -# %script.payjp-button{"data-key": "pk_test_7909da3d557868a5ca4eddd3", src: "https://checkout.pay.jp", type: "text/javascript", "data-text": "今すぐ購入する", class: "input-btn"}
+              .nav__btn--buy
+                = form_with(model: @coordinate_payment, url: coordinate_coordinate_payments_path(@coordinate.id), class: "buy__form") do |f|
+                  = f.label :purchase_amount, "購入数", class: "label__text"
+                  = f.number_field :purchase_amount, min: 1, max: 5, class: "number-field"
+                  %span.space-word 個
+                  - if user_signed_in?
+                    = f.hidden_field :user_id, value: current_user.id
+                  %script.payjp-button{"data-key": "pk_test_7909da3d557868a5ca4eddd3", src: "https://checkout.pay.jp", type: "text/javascript", "data-text": "今すぐ購入する", class: "input-btn"}
               .nav__btn--cart
                 .stock__amount
                   = "在庫数：#{@coordinate.set}"
