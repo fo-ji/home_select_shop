@@ -11,7 +11,7 @@ class CoordinatePaymentsController < ApplicationController
 
       respond_to do |format|
         if @coordinate_payment.save
-          @coordinate.update(stock: @coordinate.set - @coordinate_payment.purchase_amount)
+          @coordinate.update(set: @coordinate.set - @coordinate_payment.purchase_amount)
           format.html { redirect_to coordinate_path(@coordinate), notice: "購入完了しました。" }
         else
           format.html { redirect_to coordinate_path(@coordinate), alert: "数量を確認してください。" }
