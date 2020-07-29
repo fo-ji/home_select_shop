@@ -52,8 +52,10 @@ Rails.application.routes.draw do
     resources :item_payments, only: :create
   end
 
-  resources :coordinates, only: [:show]
-  
+  resources :coordinates, only: [:show] do
+    resources :coordinate_payments, only: :create
+  end
+
   resources :carts, only: [:show]
 
   post "/add_item"      => "carts#add_item"
