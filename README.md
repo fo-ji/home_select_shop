@@ -6,7 +6,6 @@
  - ログインメールアドレス: test_user@gmail.com
  - パスワード:1111111q
 
-
 [![Image from Gyazo](https://i.gyazo.com/c4931363e3f5d872b6bdc04709df979a.gif)](https://gyazo.com/c4931363e3f5d872b6bdc04709df979a)
 
 # このアプリについて
@@ -33,21 +32,22 @@
   * レコメンド機能を利用し、ファッション以外にもおすすめ音楽や雑貨など、コミュニティ内のトークを通じてショップが独自に情報発信出来きます。購入に移行しやすいように、URLも登録可能にしています。
 [![Image from Gyazo](https://i.gyazo.com/a89b02dd242de1655482c71cc57c3605.png)](https://gyazo.com/a89b02dd242de1655482c71cc57c3605)
   * いいね機能で発信した情報の反応を見れます。(**未実装**)
- - コーディネート商品の出品/購入機能(**未実装**)
-  * 5つのアイテムをまとめて出品、まとめて購入できます
+ - コーディネート商品の出品/購入機能
+  * 出品したアイテムから選択して１つのコーディネート商品として出品、購入できます。
+[![Image from Gyazo](https://i.gyazo.com/47a3ff4f4f3a5a7eed2f20a6a0b92049.png)](https://gyazo.com/47a3ff4f4f3a5a7eed2f20a6a0b92049)
+  * コーディネート商品で登録した各商品は個別で購入することも可能です。
+[![Image from Gyazo](https://i.gyazo.com/54efe25d83433b73218f936406eb7ef5.jpg)](https://gyazo.com/54efe25d83433b73218f936406eb7ef5)
 
 ### 詳細説明
 
  - 制作期間: 2020/6/8 ~ 
  - ユーザー管理機能 (**SNS認証は未実装**)
  - 誰でもショップ登録が可能
-  * ショップ登録者とスタイリストは商品出品/編集を行うことができる。
+  * ショップ登録者とスタイリストは商品出品/編集を行うことができます。
  - 商品の購入機能
   * 「カートにいれる」→「カート詳細ページ」→「クレジットカードによる購入」のフローです。
  [![Image from Gyazo](https://i.gyazo.com/167ba58a09d8dc56f36ab32a8521fbc1.gif)](https://gyazo.com/167ba58a09d8dc56f36ab32a8521fbc1)
   * 「今すぐ購入」→「クレジットカードによる購入」も可能です。
- - 商品をまとめて出品/購入(**未実装**)
-  * 出品済みのアイテムを(最大5個)まとめて「コーディネート商品」として出品/購入することができます。
  - カテゴリ機能(親、子の2階層)
  [![Image from Gyazo](https://i.gyazo.com/61053274ea782ae01d37c63f8136d3a4.gif)](https://gyazo.com/61053274ea782ae01d37c63f8136d3a4)
  - 画像のプレビュー機能
@@ -64,8 +64,9 @@
   * 過去の取引履歴を確認できます。
  - お気に入り機能(**未実装**)
   * 気になる商品やショップを登録し、すぐにアクセスできるようにします
- - 在庫数管理機能(**未実装**)
-  * 出品したアイテムの在庫数を管理できます。
+ - 階層表示機能
+  * 階層が深いページもある為、パンくずリストを実装しています。
+[![Image from Gyazo](https://i.gyazo.com/950f612399ccdac910c9b0186a694f6c.gif)](https://gyazo.com/950f612399ccdac910c9b0186a694f6c)
 
 # 制作
 
@@ -88,6 +89,7 @@
  - gem 'rails-controller-testing'
  - gem 'factory_bot_rails'
  - gem 'pry-rails'
+ - gem 'faker'
  - gem 'carrierwave'
  - gem 'mini_magick'
  - gem 'font-awesome-sass'
@@ -97,15 +99,16 @@
  - gem 'dotenv-rails'
  - gem 'fog'
  - gem 'payjp'
+ - gem 'gretel'
+ - gem 'bullet'
  - gem 'omniauth-facebook' (未実装)
  - gem 'omniauth-google-oauth2' (未実装)
  - gem "omniauth-rails_csrf_protection" (未実装)
- - gem 'gretel' (未実装)
  - gem 'ransack' (未実装)
  - gem 'kaminari' (未実装)
 
 ## ER図
-![HomeSelectShop_個人アプリ](https://user-images.githubusercontent.com/57491651/87876858-ca935a80-ca15-11ea-92f5-4e165d660b00.png)
+![HomeSelectShop_個人アプリ](https://user-images.githubusercontent.com/57491651/88818228-6fbde800-d1f9-11ea-86e0-ddf5c503238e.png)
 
 # テーブル
 ## Usersテーブル
@@ -136,6 +139,8 @@
 - has_many :stylists
 - has_many :shops, through: :stylists
 - has_many :recommends
+- has_many :coordinates
+- has_many :coordinate_payments
 - has_many :messages
 - has_many :likes
 - has_many :item_payments
@@ -269,6 +274,7 @@
 - has_many :users, through: :stylists
 - has_many :items
 - has_one  :community
+- has_many :coordinates
 
 ## Messagesテーブル(未実装)
 
@@ -319,6 +325,8 @@
 - has_many   :likes
 - has_many   :cart_items
 - has_many   :item_payments
+- has_many   :coordinate_items
+- has_many   :coordinates, through: :coordinate_items
 
 ## Cart_itemsテーブル
 
@@ -332,10 +340,57 @@
 - belongs_to :cart
 - belongs_to :item
 
+## Coordinatesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user         |references|null: false, foreign_key: true|
+|shop         |references|null: false, foreign_key: true|
+|name         |string    |null: false|
+|total_price  |integer   |null: false|
+|explain      |text      |null: false|
+|image        |text      |null: false|
+|postage      |string    |null: false|
+|shipping_date|string    |null: false|
+|gender       |integer   |null: false|
+|set          |integer   |null: false|
+
+### Association
+- belongs_to :shop
+- belongs_to :brand
+- has_many   :coordinate_items
+- has_many   :items, through: :coordinate_items
+- has_many   :coordinate_payments
+- has_many   :cart_coordinates
+
+## Coordinate_itemsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|coordinate|references|null: false, foreign_key: true|
+|item      |references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :coordinate
+- belongs_to :item
+
+## Cart_coordinatesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|quantity  |integer||
+|coordinate|references|null: false, foreign_key: true|
+|cart      |references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :coordinate
+- belongs_to :cart
+
 ## Cartsテーブル
 
 ### Association
 - has_many :cart_items
+- has_many :cart_coordinates
 
 ## Brandsテーブル
 
@@ -378,3 +433,16 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
+
+## Coordinate_paymentsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|purchase_amount|integer   |null: false|
+|charge_id      |string    ||
+|user           |references|null: false, foreign_key: true|
+|coordinate     |references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :coordinate
