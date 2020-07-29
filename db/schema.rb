@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_29_115353) do
+ActiveRecord::Schema.define(version: 2020_07_29_124434) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postal_code", null: false
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 2020_07_29_115353) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brand"], name: "index_brands_on_brand"
+  end
+
+  create_table "cart_coordinates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "quantity", default: 1
+    t.bigint "coordinate_id", null: false
+    t.bigint "cart_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_cart_coordinates_on_cart_id"
+    t.index ["coordinate_id"], name: "index_cart_coordinates_on_coordinate_id"
   end
 
   create_table "cart_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -245,6 +255,8 @@ ActiveRecord::Schema.define(version: 2020_07_29_115353) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "cart_coordinates", "carts"
+  add_foreign_key "cart_coordinates", "coordinates"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "items"
   add_foreign_key "communities", "shops"

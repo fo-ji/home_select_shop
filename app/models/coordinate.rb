@@ -4,6 +4,7 @@ class Coordinate < ApplicationRecord
   has_many   :coordinate_items, dependent: :destroy
   has_many   :items, through: :coordinate_items
   has_many   :coordinate_payments, dependent: :destroy
+  has_many   :cart_coordinates, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
   validates :explain, :image, :postage, :shipping_date, :gender, presence: true
