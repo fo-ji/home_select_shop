@@ -1,8 +1,9 @@
 class CartsController < ApplicationController
-  before_action :setup_cart_item!, only: [:add_item, :update_item, :delete_item]
+  before_action :setup_cart_item!, except: [:show]
 
   def show
     @cart_items = current_cart.cart_items
+    @cart_coordinates = current_cart.cart_coordinates
     @numbers = [*(1..5)]
   end
 
@@ -13,6 +14,16 @@ class CartsController < ApplicationController
 
     @cart_item.quantity += params[:quantity].to_i
     @cart_item.save
+    redirect_to current_cart
+  end
+
+  def add_coordinate
+    if @cart_coordinate.blank?
+      @cart_coordinate = current_cart.cart_coordinates.build(coordinate_id: params[:coordinate_id])
+    end
+
+    @cart_coordinate.quantity += params[:quantity].to_i
+    @cart_coordinate.save
     redirect_to current_cart
   end
 
