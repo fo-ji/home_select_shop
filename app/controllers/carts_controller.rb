@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
-  before_action :setup_cart_item!, except: [:show]
+  before_action :setup_cart_item!,       except: [:show]
+  before_action :setup_cart_coordinate!, except: [:show]
 
   def show
     @cart_items = current_cart.cart_items
@@ -32,8 +33,18 @@ class CartsController < ApplicationController
     redirect_to current_cart
   end
 
+  def update_coordinate
+    @cart_coordinate.update(quantity: params[:quantity].to_i)
+    redirect_to current_cart
+  end
+
   def delete_item
     @cart_item.destroy
+    redirect_to current_cart
+  end
+
+  def delete_coordinate
+    @cart_coordinate.destroy
     redirect_to current_cart
   end
 
@@ -41,5 +52,9 @@ class CartsController < ApplicationController
 
   def setup_cart_item!
     @cart_item = current_cart.cart_items.find_by(item_id: params[:item_id])
+  end
+
+  def setup_cart_coordinate!
+    @cart_coordinate = current_cart.cart_coordinates.find_by(coordinate_id: params[:coordinate_id])
   end
 end
