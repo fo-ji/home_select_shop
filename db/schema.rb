@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_25_141236) do
+ActiveRecord::Schema.define(version: 2020_07_29_115353) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postal_code", null: false
@@ -83,6 +83,17 @@ ActiveRecord::Schema.define(version: 2020_07_25_141236) do
     t.datetime "updated_at", null: false
     t.index ["coordinate_id"], name: "index_coordinate_items_on_coordinate_id"
     t.index ["item_id"], name: "index_coordinate_items_on_item_id"
+  end
+
+  create_table "coordinate_payments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "purchase_amount", null: false
+    t.string "charge_id"
+    t.bigint "user_id", null: false
+    t.bigint "coordinate_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coordinate_id"], name: "index_coordinate_payments_on_coordinate_id"
+    t.index ["user_id"], name: "index_coordinate_payments_on_user_id"
   end
 
   create_table "coordinates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -241,6 +252,8 @@ ActiveRecord::Schema.define(version: 2020_07_25_141236) do
   add_foreign_key "community_users", "users"
   add_foreign_key "coordinate_items", "coordinates"
   add_foreign_key "coordinate_items", "items"
+  add_foreign_key "coordinate_payments", "coordinates"
+  add_foreign_key "coordinate_payments", "users"
   add_foreign_key "coordinates", "shops"
   add_foreign_key "coordinates", "users"
   add_foreign_key "credit_cards", "users"
