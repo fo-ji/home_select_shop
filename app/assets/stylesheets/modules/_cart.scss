@@ -1,5 +1,5 @@
 .wrapper__cart {
-  height: calc(100vh - 50px - 50px);
+  height: calc(100% - 50px - 50px);
 }
 
 .cart__container {
@@ -78,6 +78,7 @@
 
       &--buy {
         text-align: right;
+        margin-bottom: 100px;
       }
     }
   }

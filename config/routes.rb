@@ -62,7 +62,9 @@ Rails.application.routes.draw do
   post "/update_item"   => "carts#update_item"
   delete "/delete_item" => "carts#delete_item"
 
-  post "/add_coordinate" => "carts#add_coordinate"
+  post "/add_coordinate"      => "carts#add_coordinate"
+  post "/update_coordinate"   => "carts#update_coordinate"
+  delete "/delete_coordinate" => "carts#delete_coordinate"
 
   resources :credit_cards, only: [:new, :show] do
     collection do
