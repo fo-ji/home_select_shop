@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many   :talks, dependent: :destroy
   has_many   :recommends, dependent: :destroy
   has_many   :coordinates, dependent: :destroy
+  has_many   :coordinate_payments, dependent: :destroy
 
   accepts_nested_attributes_for :address
 
